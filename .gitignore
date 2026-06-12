@@ -30,6 +30,9 @@ log/
 *.swo
 *~
 
+# Keep project journal
+!Metodology/journal.log
+
 # IDE and editor settings
 .vscode/
 .idea/
