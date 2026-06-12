@@ -53,7 +53,13 @@
 - Обновлён `CHANGELOG.md` (релиз, GitHub Actions, journal.log).
 - Обновлён `Metodology/tests_master_plan.md` (push workflow scope).
 
+## 2026-06-12 15:25 — Этап 7: Сохранение шаблона workflow в репозитории
+- Workflow файл сохранён как `docs/github-actions-commit-message-check.yml`.
+- Оригинал `.github/workflows/commit-message-check.yml` остаётся untracked.
+- Пользователь может активировать workflow, перенеся файл в `.github/workflows/` и запушив с токеном scope `workflow`.
+
 ## Статус: ✅ Завершено (с частичным блокером)
 - Репозиторий: https://github.com/dkfcnm/Calk-KMF
 - Релиз: https://github.com/dkfcnm/Calk-KMF/releases/tag/v2.8.0
-- Блокер: GitHub Actions workflow ожидает токена с scope `workflow` для push.
+- Блокер: GitHub Actions workflow ожидает токена с scope `workflow` для активации.
+- Шаблон workflow доступен в `docs/github-actions-commit-message-check.yml`.

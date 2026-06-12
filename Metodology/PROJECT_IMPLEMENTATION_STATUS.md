@@ -42,7 +42,7 @@
 ✅ **Phase 8** (2026-06-05): Полный переход на PostgreSQL-only — API сервисы (refs.py, tongshu_daily_service.py, personalized_service.py) переведены на SQLAlchemy, удалён SQLite fallback из logger.py и db_config.py, тесты переписаны на PostgreSQL, архивированы 50+ SQLite-зависимых скриптов. Созданы/синхронизированы недостающие таблицы в PostgreSQL: spr_day_officer_value, spr_tongshu_constellation, spr_tongshu_constellation_cycle, spr_great_sun_mountain, spr_qimen_gates, spr_qimen_spirits, spr_qimen_stars, spr_ri_jia. Добавлена колонка dagua_family в spr_jiazi_extended и icon_svg в spr_tongshu_black_rabbit_star. Исправлены placeholders TongShuDay (? → %s) для pg8000. Все тесты проходят: Python 38/38, React 32/32, build успешен.
 ✅ **GitHub Publication** (2026-06-12): Проект опубликован на GitHub в публичном репозитории `dkfcnm/Calk-KMF`. Создан первый коммит с 349 файлами и детальным описанием. Настроен `.gitignore`, `.gitmessage` (шаблон коммита), `docs/commit-guidelines.md`. Обновлены `CHANGELOG.md`, `PROJECT.md`, `Metodology/bz.md`, `Metodology/tests_master_plan.md`, `Metodology/journal.log`.
 ✅ **GitHub Release v2.8.0** (2026-06-12): Создан первый релиз на GitHub https://github.com/dkfcnm/Calk-KMF/releases/tag/v2.8.0.
-🔄 **GitHub Actions** (2026-06-12): Создан workflow `.github/workflows/commit-message-check.yml` локально. Push на GitHub требует Personal Access Token с scope `workflow` (см. `Metodology/bz.md`, Ошибка 28).
+✅ **GitHub Actions** (2026-06-12): Создан workflow `.github/workflows/commit-message-check.yml` и его шаблон сохранён в `docs/github-actions-commit-message-check.yml`. Push в `.github/workflows/` требует Personal Access Token с scope `workflow` (см. `Metodology/bz.md`, Ошибка 28).
 
 ### 2.2. Техническая архитектура
 
