@@ -70,6 +70,11 @@
 - Заменён runner ubuntu-latest на ubuntu-22.04.
 - Workflow YAML проверен на валидность.
 
+## 2026-06-12 15:40 — Этап 10: Завершение задачи
+- Обновлён `Metodology/tests_master_plan.md` раздел 8.3 — проверка workflow.
+- Выполнен стандартный чеклист завершения задачи.
+- Все изменения запушены на GitHub.
+
 ## Статус: ✅ Завершено
 - Репозиторий: https://github.com/dkfcnm/Calk-KMF
 - Релиз: https://github.com/dkfcnm/Calk-KMF/releases/tag/v2.8.0
