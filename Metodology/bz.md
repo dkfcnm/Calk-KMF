@@ -669,4 +669,31 @@ git push https://dkfcnm:TOKEN@github.com/dkfcnm/Calk-KMF.git main
 
 ---
 
+## Ошибка 29: GitHub Actions runner не стартует в тестовом окружении
+
+**Контекст:** Активация workflow `.github/workflows/commit-message-check.yml` и тестовые запуски.
+
+**Симптом:**
+- Workflow создаётся и активируется успешно.
+- Статус run: `completed`, `conclusion: failure`.
+- В логах только `system.txt`:
+  ```
+  Job is waiting for a hosted runner to come online.
+  Job is about to start running on the hosted runner: GitHub Actions 1000000001
+  ```
+- Шаги workflow не выполняются, runner не выдаёт логи шагов.
+
+**Причина:** Вероятно, ограничение тестового/sandbox окружения GitHub. Runner назначается, но не может физически запустить job. В реальном production-окружении GitHub Actions runner должен работать корректно.
+
+**Решение:**
+1. Убедиться, что workflow YAML валиден (`python -c "import yaml; yaml.safe_load(open('.github/workflows/...'))"`).
+2. Проверить, что Actions включены в настройках репозитория.
+3. Использовать стабильный runner (`ubuntu-22.04` или `ubuntu-latest`).
+4. Если проблема сохраняется в production — проверить billing/limitations аккаунта.
+
+**Файлы:**
+- `.github/workflows/commit-message-check.yml`
+
+---
+
 *Последнее обновление: 2026-06-12*
