@@ -26,3 +26,34 @@
   - 5.21 Создание первого релиза v2.8.0
   - 5.22 Исключение journal.log в .gitignore
 
+## 2026-06-12 14:55 — Этап 2: Исключение journal.log в .gitignore
+- Добавлено исключение `!Metodology/journal.log` в `.gitignore`.
+- Файл `Metodology/journal.log` теперь отслеживается в Git.
+- Коммит `8d43238` [CONFIG] запушен на GitHub.
+
+## 2026-06-12 15:00 — Этап 3: GitHub Actions workflow
+- Создан `.github/workflows/commit-message-check.yml`.
+- Workflow проверяет тип коммита и длину первой строки.
+- Push workflow на GitHub отклонён: требуется scope `workflow`.
+- Ошибка задокументирована в `Metodology/bz.md` (Ошибка 28).
+- Workflow файл остаётся локально и в коммите `c61edc9`.
+
+## 2026-06-12 15:05 — Этап 4: Создание релиза v2.8.0
+- Создан релиз `v2.8.0` через GitHub API: https://github.com/dkfcnm/Calk-KMF/releases/tag/v2.8.0
+- Релиз включает описание функционала и ссылку на CHANGELOG.md.
+
+## 2026-06-12 15:10 — Этап 5: Автономные коммиты
+- Подтвержден режим автономных коммитов: агент создаёт коммиты с детальными сообщениями без дополнительного подтверждения пользователя.
+- Перед каждым коммитом выполняется `git status` и проверка `.git/config` на отсутствие токенов.
+
+## 2026-06-12 15:15 — Этап 6: Обновление документации
+- Обновлён `Metodology/bz.md` (Ошибка 28).
+- Обновлён `PROJECT.md` (статусы 5.20–5.22).
+- Обновлён `Metodology/PROJECT_IMPLEMENTATION_STATUS.md` (релиз, GitHub Actions).
+- Обновлён `CHANGELOG.md` (релиз, GitHub Actions, journal.log).
+- Обновлён `Metodology/tests_master_plan.md` (push workflow scope).
+
+## Статус: ✅ Завершено (с частичным блокером)
+- Репозиторий: https://github.com/dkfcnm/Calk-KMF
+- Релиз: https://github.com/dkfcnm/Calk-KMF/releases/tag/v2.8.0
+- Блокер: GitHub Actions workflow ожидает токена с scope `workflow` для push.

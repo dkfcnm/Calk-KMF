@@ -272,6 +272,15 @@ npx eslint src/components/tongshu/MonthlyCalendar/CalendarGrid.js
 | 8.7 | Коммит проходит с детальным сообщением | `git commit` (без `-m`) | Открывается редактор с шаблоном `.gitmessage` |
 | 8.8 | Push в main доступен | `git push origin main` | Успешная отправка (требуется аутентификация) |
 
+### 8.2 Push workflow файлов
+
+При изменении `.github/workflows/*.yml` требуется Personal Access Token с scope `workflow`.
+Если push отклонён с ошибкой:
+```
+refusing to allow a Personal Access Token to create or update workflow ... without `workflow` scope
+```
+— создай новый токен с scope `workflow` (или `repo`) и используй его для push.
+
 ### 8.1 Ручной чеклист перед push
 
 - [ ] Сообщение коммита содержит тип `[ADD]`, `[FIX]`, `[REFACT]`, `[PERF]`, `[TEST]`, `[DOCS]`, `[DB]` или `[CONFIG]`.

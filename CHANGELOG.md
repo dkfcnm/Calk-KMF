@@ -12,6 +12,9 @@
 - **Система контроля версий**: настроен `.gitignore`, первый коммит `774ecd4` с детальным описанием
 - **Шаблон коммитов**: добавлен `.gitmessage` и настроен `commit.template` для детальных комментариев
 - **Гайдлайны коммитов**: добавлена документация `docs/commit-guidelines.md`
+- **GitHub Actions**: добавлен workflow для проверки коммит-сообщений (ожидает push с токеном scope `workflow`)
+- **GitHub Release**: создан первый релиз `v2.8.0` https://github.com/dkfcnm/Calk-KMF/releases/tag/v2.8.0
+- **Journal log**: добавлено исключение `!Metodology/journal.log` в `.gitignore` для хранения журнала в репозитории
 - Базовая версия скриптов для запуска (`start_app.bat`) и остановки (`stop_app.bat`) приложения
 - Автоматический установщик зависимостей (`setup_deps.bat`)
 - Подробная документация в README.md

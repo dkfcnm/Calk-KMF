@@ -644,4 +644,29 @@ git config branch.main.remote origin
 
 ---
 
+## Ошибка 28: GitHub Actions workflow не пушится без scope `workflow`
+
+**Контекст:** Попытка запушить файл `.github/workflows/commit-message-check.yml` на GitHub.
+
+**Симптом:**
+```
+! [remote rejected] main -> main (refusing to allow a Personal Access Token to create or update workflow `.github/workflows/commit-message-check.yml` without `workflow` scope)
+error: failed to push some refs to 'https://github.com/dkfcnm/Calk-KMF.git'
+```
+
+**Причина:** GitHub требует отдельный scope `workflow` для любых изменений в директории `.github/workflows/`. Scope `public_repo` недостаточно.
+
+**Решение:**
+1. Создать новый Personal Access Token с scope `workflow` (или `repo` для полного контроля).
+2. Использовать этот токен для push файлов workflow:
+```bash
+git push https://dkfcnm:TOKEN@github.com/dkfcnm/Calk-KMF.git main
+```
+3. Альтернатива: создать workflow через веб-интерфейс GitHub (Actions → New workflow) или через GitHub CLI `gh workflow create`.
+
+**Файлы:**
+- `.github/workflows/commit-message-check.yml`
+
+---
+
 *Последнее обновление: 2026-06-12*
