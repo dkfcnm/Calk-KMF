@@ -75,8 +75,19 @@
 - Выполнен стандартный чеклист завершения задачи.
 - Все изменения запушены на GitHub.
 
-## Статус: ✅ Завершено
+## 2026-06-12 15:55 — Этап 11: Уточнение причины падения workflow
+- Открыта страница run https://github.com/dkfcnm/Calk-KMF/actions/runs/27416551889.
+- Найдена точная причина в аннотациях GitHub:
+  ```
+  The job was not started because your account is locked due to a billing issue.
+  ```
+- Проверка через API подтвердила: `runner_id: 0`, `runner_name: ""`, `steps: []`.
+- Workflow файл корректен, триггеры работают, run создаётся автоматически.
+- Проблема не в коде, а в блокировке аккаунта `dkfcnm` по billing issue.
+- Обновлена `Metodology/bz.md` (Ошибка 29) с точной диагностикой и путями решения.
+
+## Статус: ✅ Завершено (ожидается разблокировка GitHub-аккаунта)
 - Репозиторий: https://github.com/dkfcnm/Calk-KMF
 - Релиз: https://github.com/dkfcnm/Calk-KMF/releases/tag/v2.8.0
 - GitHub Actions workflow активирован: https://github.com/dkfcnm/Calk-KMF/actions/workflows/commit-message-check.yml
-- Примечание: в текущем тестовом окружении runner GitHub Actions не стартует (Ошибка 29), но workflow файл корректен и будет работать в production.
+- Примечание: workflow запускается автоматически, но падает, потому что аккаунт `dkfcnm` заблокирован по billing issue. После разблокировки проверка коммит-сообщений будет работать штатно.

@@ -669,27 +669,38 @@ git push https://dkfcnm:TOKEN@github.com/dkfcnm/Calk-KMF.git main
 
 ---
 
-## Ошибка 29: GitHub Actions runner не стартует в тестовом окружении
+## Ошибка 29: GitHub Actions runner не стартует из-за billing issue
 
-**Контекст:** Активация workflow `.github/workflows/commit-message-check.yml` и тестовые запуски.
+**Контекст:** Активация workflow `.github/workflows/commit-message-check.yml` и тестовые запуски при push в `main`.
 
 **Симптом:**
 - Workflow создаётся и активируется успешно.
+- При каждом push в `main` run запускается автоматически.
 - Статус run: `completed`, `conclusion: failure`.
-- В логах только `system.txt`:
+- В API `runner_id: 0`, `runner_name: ""`, `steps: []` — runner не назначен.
+- В веб-интерфейсе run аннотация:
   ```
-  Job is waiting for a hosted runner to come online.
-  Job is about to start running on the hosted runner: GitHub Actions 1000000001
+  The job was not started because your account is locked due to a billing issue.
   ```
-- Шаги workflow не выполняются, runner не выдаёт логи шагов.
+- Шаги workflow не выполняются, потому что виртуальная машина runner не запускается.
 
-**Причина:** Вероятно, ограничение тестового/sandbox окружения GitHub. Runner назначается, но не может физически запустить job. В реальном production-окружении GitHub Actions runner должен работать корректно.
+**Причина:**
+Аккаунт GitHub `dkfcnm` заблокирован для запуска Actions из-за платёжной проблемы (billing issue). GitHub принимает workflow, создаёт run, но отказывается выделять hosted runner, пока аккаунт заблокирован. Это не ошибка в YAML workflow и не проблема триггеров.
 
 **Решение:**
-1. Убедиться, что workflow YAML валиден (`python -c "import yaml; yaml.safe_load(open('.github/workflows/...'))"`).
-2. Проверить, что Actions включены в настройках репозитория.
-3. Использовать стабильный runner (`ubuntu-22.04` или `ubuntu-latest`).
-4. Если проблема сохраняется в production — проверить billing/limitations аккаунта.
+1. **Разблокировать аккаунт (рекомендуется):**
+   - Открыть https://github.com/settings/billing
+   - Проверить и обновить способ оплаты.
+   - Устранить неоплаченные счета или просроченную карту.
+   - При необходимости обратиться в GitHub Support: https://support.github.com/contact
+2. **После разблокировки** следующий push в `main` автоматически запустит workflow на нормальном runner'е (`ubuntu-22.04`).
+3. **Альтернативы, если billing issue не решается:**
+   - Перенести репозиторий на аккаунт без billing-проблем.
+   - Настроить self-hosted runner на собственной машине (требует регистрации через GitHub, может быть ограничена той же блокировкой).
+
+**Проверка:**
+- Страница run: https://github.com/dkfcnm/Calk-KMF/actions/runs/27416551889
+- Workflow файл: `.github/workflows/commit-message-check.yml`
 
 **Файлы:**
 - `.github/workflows/commit-message-check.yml`
