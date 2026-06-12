@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "Project Databases": {
+      "command": "py",
+      "args": [
+        "e:\\Project\\Calk_KMF\\code\\common\\mcp_server.py",
+        "--main-db", "e:\\Project\\Calk_KMF\\calk_kmf.sqlite",
+        "--ref-db", "e:\\Project\\Calk_KMF\\Metodology\\BD.db"
+      ]
+    }
+  }
+}

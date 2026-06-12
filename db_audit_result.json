@@ -1,0 +1,4540 @@
+{
+  "db_path": "calk_kmf.sqlite",
+  "db_size_mb": 4792.76,
+  "total_tables": 71,
+  "total_views": 34,
+  "total_indexes": 20,
+  "tables": {
+    "spr_analysis_scope": {
+      "category": "reference",
+      "columns": [
+        {
+          "cid": 0,
+          "name": "scope_code",
+          "type": "TEXT",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 1
+        },
+        {
+          "cid": 1,
+          "name": "name_ru",
+          "type": "TEXT",
+          "notnull": 1,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 2,
+          "name": "description_ru",
+          "type": "TEXT",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 0
+        }
+      ],
+      "row_count": 4,
+      "foreign_keys": []
+    },
+    "spr_bazi_qi_phase": {
+      "category": "reference",
+      "columns": [
+        {
+          "cid": 0,
+          "name": "id",
+          "type": "INTEGER",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 1
+        },
+        {
+          "cid": 1,
+          "name": "stem_char",
+          "type": "TEXT",
+          "notnull": 1,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 2,
+          "name": "branch_char",
+          "type": "TEXT",
+          "notnull": 1,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 3,
+          "name": "phase_id",
+          "type": "INTEGER",
+          "notnull": 1,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 4,
+          "name": "phase_name",
+          "type": "TEXT",
+          "notnull": 1,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 5,
+          "name": "numeric_score",
+          "type": "REAL",
+          "notnull": 0,
+          "dflt_value": "0",
+          "pk": 0
+        }
+      ],
+      "row_count": 120,
+      "foreign_keys": []
+    },
+    "spr_black_rabbit_matrix": {
+      "category": "reference",
+      "columns": [
+        {
+          "cid": 0,
+          "name": "jiazi_id",
+          "type": "INTEGER",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 1
+        },
+        {
+          "cid": 1,
+          "name": "lunar_day",
+          "type": "INTEGER",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 2
+        },
+        {
+          "cid": 2,
+          "name": "star_name",
+          "type": "TEXT",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 0
+        }
+      ],
+      "row_count": 1800,
+      "foreign_keys": []
+    },
+    "spr_black_rabbit_scores": {
+      "category": "reference",
+      "columns": [
+        {
+          "cid": 0,
+          "name": "star_name",
+          "type": "TEXT",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 1
+        },
+        {
+          "cid": 1,
+          "name": "numeric_score",
+          "type": "REAL",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 0
+        }
+      ],
+      "row_count": 9,
+      "foreign_keys": []
+    },
+    "spr_column_comment": {
+      "category": "reference",
+      "columns": [
+        {
+          "cid": 0,
+          "name": "table_name",
+          "type": "TEXT",
+          "notnull": 1,
+          "dflt_value": null,
+          "pk": 1
+        },
+        {
+          "cid": 1,
+          "name": "column_name",
+          "type": "TEXT",
+          "notnull": 1,
+          "dflt_value": null,
+          "pk": 2
+        },
+        {
+          "cid": 2,
+          "name": "comment_text",
+          "type": "TEXT",
+          "notnull": 1,
+          "dflt_value": null,
+          "pk": 0
+        }
+      ],
+      "row_count": 196,
+      "foreign_keys": [
+        {
+          "id": 0,
+          "seq": 0,
+          "table": "spr_table_comment",
+          "from": "table_name",
+          "to": "table_name",
+          "on_update": "NO ACTION",
+          "on_delete": "NO ACTION"
+        }
+      ]
+    },
+    "spr_day_officer_mapping": {
+      "category": "reference",
+      "columns": [
+        {
+          "cid": 0,
+          "name": "month_branch_id",
+          "type": "INTEGER",
+          "notnull": 1,
+          "dflt_value": null,
+          "pk": 1
+        },
+        {
+          "cid": 1,
+          "name": "day_branch_id",
+          "type": "INTEGER",
+          "notnull": 1,
+          "dflt_value": null,
+          "pk": 2
+        },
+        {
+          "cid": 2,
+          "name": "officer_value_id",
+          "type": "INTEGER",
+          "notnull": 1,
+          "dflt_value": null,
+          "pk": 0
+        }
+      ],
+      "row_count": 144,
+      "foreign_keys": [
+        {
+          "id": 0,
+          "seq": 0,
+          "table": "spr_indicator_value",
+          "from": "officer_value_id",
+          "to": "value_id",
+          "on_update": "NO ACTION",
+          "on_delete": "NO ACTION"
+        },
+        {
+          "id": 1,
+          "seq": 0,
+          "table": "spr_earthly_branch",
+          "from": "day_branch_id",
+          "to": "branch_id",
+          "on_update": "NO ACTION",
+          "on_delete": "NO ACTION"
+        },
+        {
+          "id": 2,
+          "seq": 0,
+          "table": "spr_earthly_branch",
+          "from": "month_branch_id",
+          "to": "branch_id",
+          "on_update": "NO ACTION",
+          "on_delete": "NO ACTION"
+        }
+      ]
+    },
+    "spr_earthly_branch": {
+      "category": "reference",
+      "columns": [
+        {
+          "cid": 0,
+          "name": "branch_id",
+          "type": "INTEGER",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 1
+        },
+        {
+          "cid": 1,
+          "name": "branch_char",
+          "type": "TEXT",
+          "notnull": 1,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 2,
+          "name": "branch_pinyin",
+          "type": "TEXT",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 3,
+          "name": "branch_rus",
+          "type": "TEXT",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 4,
+          "name": "element",
+          "type": "TEXT",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 5,
+          "name": "yin_yang",
+          "type": "TEXT",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 6,
+          "name": "yuan_level",
+          "type": "INTEGER",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 7,
+          "name": "start_hour",
+          "type": "INTEGER",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 8,
+          "name": "end_hour",
+          "type": "INTEGER",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 9,
+          "name": "guigu_score",
+          "type": "INTEGER",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 0
+        }
+      ],
+      "row_count": 12,
+      "foreign_keys": []
+    },
+    "spr_gates": {
+      "category": "reference",
+      "columns": [
+        {
+          "cid": 0,
+          "name": "id",
+          "type": "INTEGER",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 1
+        },
+        {
+          "cid": 1,
+          "name": "name_en",
+          "type": "TEXT",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 2,
+          "name": "name_ru",
+          "type": "TEXT",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 0
+        }
+      ],
+      "row_count": 9,
+      "foreign_keys": []
+    },
+    "spr_gods": {
+      "category": "reference",
+      "columns": [
+        {
+          "cid": 0,
+          "name": "id",
+          "type": "INTEGER",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 1
+        },
+        {
+          "cid": 1,
+          "name": "name_en",
+          "type": "TEXT",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 2,
+          "name": "name_ru",
+          "type": "TEXT",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 0
+        }
+      ],
+      "row_count": 8,
+      "foreign_keys": []
+    },
+    "spr_heavenly_stem": {
+      "category": "reference",
+      "columns": [
+        {
+          "cid": 0,
+          "name": "stem_id",
+          "type": "INTEGER",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 1
+        },
+        {
+          "cid": 1,
+          "name": "stem_char",
+          "type": "TEXT",
+          "notnull": 1,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 2,
+          "name": "stem_pinyin",
+          "type": "TEXT",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 3,
+          "name": "stem_rus",
+          "type": "TEXT",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 4,
+          "name": "element",
+          "type": "TEXT",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 5,
+          "name": "yin_yang",
+          "type": "TEXT",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 6,
+          "name": "guigu_score",
+          "type": "INTEGER",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 0
+        }
+      ],
+      "row_count": 10,
+      "foreign_keys": []
+    },
+    "spr_hour_stars": {
+      "category": "reference",
+      "columns": [
+        {
+          "cid": 0,
+          "name": "day_branch",
+          "type": "TEXT",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 1
+        },
+        {
+          "cid": 1,
+          "name": "yin_yang",
+          "type": "INTEGER",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 2
+        },
+        {
+          "cid": 2,
+          "name": "hour_branch",
+          "type": "TEXT",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 3
+        },
+        {
+          "cid": 3,
+          "name": "star",
+          "type": "INTEGER",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 0
+        }
+      ],
+      "row_count": 288,
+      "foreign_keys": []
+    },
+    "spr_indicator": {
+      "category": "reference",
+      "columns": [
+        {
+          "cid": 0,
+          "name": "indicator_id",
+          "type": "INTEGER",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 1
+        },
+        {
+          "cid": 1,
+          "name": "code",
+          "type": "TEXT",
+          "notnull": 1,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 2,
+          "name": "name_ru",
+          "type": "TEXT",
+          "notnull": 1,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 3,
+          "name": "description_ru",
+          "type": "TEXT",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 4,
+          "name": "level",
+          "type": "TEXT",
+          "notnull": 1,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 5,
+          "name": "value_type",
+          "type": "TEXT",
+          "notnull": 1,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 6,
+          "name": "is_active",
+          "type": "INTEGER",
+          "notnull": 1,
+          "dflt_value": "1",
+          "pk": 0
+        }
+      ],
+      "row_count": 2,
+      "foreign_keys": []
+    },
+    "spr_indicator_scope": {
+      "category": "reference",
+      "columns": [
+        {
+          "cid": 0,
+          "name": "indicator_id",
+          "type": "INTEGER",
+          "notnull": 1,
+          "dflt_value": null,
+          "pk": 1
+        },
+        {
+          "cid": 1,
+          "name": "scope_code",
+          "type": "TEXT",
+          "notnull": 1,
+          "dflt_value": null,
+          "pk": 2
+        }
+      ],
+      "row_count": 2,
+      "foreign_keys": [
+        {
+          "id": 0,
+          "seq": 0,
+          "table": "spr_analysis_scope",
+          "from": "scope_code",
+          "to": "scope_code",
+          "on_update": "NO ACTION",
+          "on_delete": "NO ACTION"
+        },
+        {
+          "id": 1,
+          "seq": 0,
+          "table": "spr_indicator",
+          "from": "indicator_id",
+          "to": "indicator_id",
+          "on_update": "NO ACTION",
+          "on_delete": "NO ACTION"
+        }
+      ]
+    },
+    "spr_indicator_value": {
+      "category": "reference",
+      "columns": [
+        {
+          "cid": 0,
+          "name": "value_id",
+          "type": "INTEGER",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 1
+        },
+        {
+          "cid": 1,
+          "name": "indicator_id",
+          "type": "INTEGER",
+          "notnull": 1,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 2,
+          "name": "code",
+          "type": "TEXT",
+          "notnull": 1,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 3,
+          "name": "name_ru",
+          "type": "TEXT",
+          "notnull": 1,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 4,
+          "name": "description_ru",
+          "type": "TEXT",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 5,
+          "name": "favorable_actions",
+          "type": "TEXT",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 6,
+          "name": "unfavorable_actions",
+          "type": "TEXT",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 7,
+          "name": "interpretation_ru",
+          "type": "",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 8,
+          "name": "numeric_score",
+          "type": "",
+          "notnull": 1,
+          "dflt_value": "0",
+          "pk": 0
+        }
+      ],
+      "row_count": 17,
+      "foreign_keys": [
+        {
+          "id": 0,
+          "seq": 0,
+          "table": "spr_indicator",
+          "from": "indicator_id",
+          "to": "indicator_id",
+          "on_update": "NO ACTION",
+          "on_delete": "NO ACTION"
+        }
+      ]
+    },
+    "spr_jiazi_extended": {
+      "category": "reference",
+      "columns": [
+        {
+          "cid": 0,
+          "name": "jiazi_id",
+          "type": "INTEGER",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 1
+        },
+        {
+          "cid": 1,
+          "name": "stem",
+          "type": "TEXT",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 2,
+          "name": "branch",
+          "type": "TEXT",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 3,
+          "name": "nayin_element",
+          "type": "TEXT",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 4,
+          "name": "nayin_name",
+          "type": "TEXT",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 5,
+          "name": "dagua_element",
+          "type": "INTEGER",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 6,
+          "name": "dagua_period",
+          "type": "INTEGER",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 7,
+          "name": "dagua_family",
+          "type": "INTEGER",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 8,
+          "name": "dagua_role",
+          "type": "TEXT",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 0
+        }
+      ],
+      "row_count": 60,
+      "foreign_keys": []
+    },
+    "spr_leader_stems": {
+      "category": "reference",
+      "columns": [
+        {
+          "cid": 0,
+          "name": "idx",
+          "type": "INTEGER",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 1
+        },
+        {
+          "cid": 1,
+          "name": "stem",
+          "type": "TEXT",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 0
+        }
+      ],
+      "row_count": 6,
+      "foreign_keys": []
+    },
+    "spr_master_dano_mapping": {
+      "category": "reference",
+      "columns": [
+        {
+          "cid": 0,
+          "name": "month_branch_id",
+          "type": "INTEGER",
+          "notnull": 1,
+          "dflt_value": null,
+          "pk": 1
+        },
+        {
+          "cid": 1,
+          "name": "day_stem_id",
+          "type": "INTEGER",
+          "notnull": 1,
+          "dflt_value": null,
+          "pk": 2
+        },
+        {
+          "cid": 2,
+          "name": "day_branch_id",
+          "type": "INTEGER",
+          "notnull": 1,
+          "dflt_value": null,
+          "pk": 3
+        },
+        {
+          "cid": 3,
+          "name": "indicator_value_id",
+          "type": "INTEGER",
+          "notnull": 1,
+          "dflt_value": null,
+          "pk": 0
+        }
+      ],
+      "row_count": 720,
+      "foreign_keys": [
+        {
+          "id": 0,
+          "seq": 0,
+          "table": "spr_indicator_value",
+          "from": "indicator_value_id",
+          "to": "value_id",
+          "on_update": "NO ACTION",
+          "on_delete": "NO ACTION"
+        },
+        {
+          "id": 1,
+          "seq": 0,
+          "table": "spr_earthly_branch",
+          "from": "day_branch_id",
+          "to": "branch_id",
+          "on_update": "NO ACTION",
+          "on_delete": "NO ACTION"
+        },
+        {
+          "id": 2,
+          "seq": 0,
+          "table": "spr_heavenly_stem",
+          "from": "day_stem_id",
+          "to": "stem_id",
+          "on_update": "NO ACTION",
+          "on_delete": "NO ACTION"
+        },
+        {
+          "id": 3,
+          "seq": 0,
+          "table": "spr_earthly_branch",
+          "from": "month_branch_id",
+          "to": "branch_id",
+          "on_update": "NO ACTION",
+          "on_delete": "NO ACTION"
+        }
+      ]
+    },
+    "spr_month_stars": {
+      "category": "reference",
+      "columns": [
+        {
+          "cid": 0,
+          "name": "year_branch",
+          "type": "TEXT",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 1
+        },
+        {
+          "cid": 1,
+          "name": "month_branch",
+          "type": "TEXT",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 2
+        },
+        {
+          "cid": 2,
+          "name": "star",
+          "type": "INTEGER",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 0
+        }
+      ],
+      "row_count": 144,
+      "foreign_keys": []
+    },
+    "spr_pillar_cycle": {
+      "category": "reference",
+      "columns": [
+        {
+          "cid": 0,
+          "name": "cycle_index",
+          "type": "INTEGER",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 1
+        },
+        {
+          "cid": 1,
+          "name": "stem_id",
+          "type": "INTEGER",
+          "notnull": 1,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 2,
+          "name": "branch_id",
+          "type": "INTEGER",
+          "notnull": 1,
+          "dflt_value": null,
+          "pk": 0
+        }
+      ],
+      "row_count": 60,
+      "foreign_keys": [
+        {
+          "id": 0,
+          "seq": 0,
+          "table": "spr_earthly_branch",
+          "from": "branch_id",
+          "to": "branch_id",
+          "on_update": "NO ACTION",
+          "on_delete": "NO ACTION"
+        },
+        {
+          "id": 1,
+          "seq": 0,
+          "table": "spr_heavenly_stem",
+          "from": "stem_id",
+          "to": "stem_id",
+          "on_update": "NO ACTION",
+          "on_delete": "NO ACTION"
+        }
+      ]
+    },
+    "spr_pillar_hour_rule": {
+      "category": "reference",
+      "columns": [
+        {
+          "cid": 0,
+          "name": "day_stem_id",
+          "type": "INTEGER",
+          "notnull": 1,
+          "dflt_value": null,
+          "pk": 1
+        },
+        {
+          "cid": 1,
+          "name": "hour_branch_id",
+          "type": "INTEGER",
+          "notnull": 1,
+          "dflt_value": null,
+          "pk": 2
+        },
+        {
+          "cid": 2,
+          "name": "hour_stem_id",
+          "type": "INTEGER",
+          "notnull": 1,
+          "dflt_value": null,
+          "pk": 0
+        }
+      ],
+      "row_count": 120,
+      "foreign_keys": [
+        {
+          "id": 0,
+          "seq": 0,
+          "table": "spr_heavenly_stem",
+          "from": "hour_stem_id",
+          "to": "stem_id",
+          "on_update": "NO ACTION",
+          "on_delete": "NO ACTION"
+        },
+        {
+          "id": 1,
+          "seq": 0,
+          "table": "spr_earthly_branch",
+          "from": "hour_branch_id",
+          "to": "branch_id",
+          "on_update": "NO ACTION",
+          "on_delete": "NO ACTION"
+        },
+        {
+          "id": 2,
+          "seq": 0,
+          "table": "spr_heavenly_stem",
+          "from": "day_stem_id",
+          "to": "stem_id",
+          "on_update": "NO ACTION",
+          "on_delete": "NO ACTION"
+        }
+      ]
+    },
+    "spr_pillar_month_rule": {
+      "category": "reference",
+      "columns": [
+        {
+          "cid": 0,
+          "name": "year_stem_id",
+          "type": "INTEGER",
+          "notnull": 1,
+          "dflt_value": null,
+          "pk": 1
+        },
+        {
+          "cid": 1,
+          "name": "month_index",
+          "type": "INTEGER",
+          "notnull": 1,
+          "dflt_value": null,
+          "pk": 2
+        },
+        {
+          "cid": 2,
+          "name": "month_stem_id",
+          "type": "INTEGER",
+          "notnull": 1,
+          "dflt_value": null,
+          "pk": 0
+        }
+      ],
+      "row_count": 120,
+      "foreign_keys": [
+        {
+          "id": 0,
+          "seq": 0,
+          "table": "spr_heavenly_stem",
+          "from": "month_stem_id",
+          "to": "stem_id",
+          "on_update": "NO ACTION",
+          "on_delete": "NO ACTION"
+        },
+        {
+          "id": 1,
+          "seq": 0,
+          "table": "spr_heavenly_stem",
+          "from": "year_stem_id",
+          "to": "stem_id",
+          "on_update": "NO ACTION",
+          "on_delete": "NO ACTION"
+        }
+      ]
+    },
+    "spr_qimen_templates": {
+      "category": "reference",
+      "columns": [
+        {
+          "cid": 0,
+          "name": "template_id",
+          "type": "TEXT",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 1
+        },
+        {
+          "cid": 1,
+          "name": "rasklad_id",
+          "type": "TEXT",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 2,
+          "name": "yin_yang",
+          "type": "TEXT",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 3,
+          "name": "ju_num",
+          "type": "INTEGER",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 4,
+          "name": "hour_stem_branch",
+          "type": "TEXT",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 5,
+          "name": "palace_no",
+          "type": "INTEGER",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 6,
+          "name": "structure",
+          "type": "TEXT",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 7,
+          "name": "heaven_stem",
+          "type": "TEXT",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 8,
+          "name": "is_fou_tou_heaven",
+          "type": "INTEGER",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 9,
+          "name": "earth_stem",
+          "type": "TEXT",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 10,
+          "name": "is_fou_tou_earth",
+          "type": "INTEGER",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 11,
+          "name": "star",
+          "type": "TEXT",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 12,
+          "name": "is_main_star",
+          "type": "INTEGER",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 13,
+          "name": "gate",
+          "type": "TEXT",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 14,
+          "name": "is_main_gate",
+          "type": "INTEGER",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 15,
+          "name": "spirit",
+          "type": "TEXT",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 0
+        }
+      ],
+      "row_count": 9720,
+      "foreign_keys": []
+    },
+    "spr_ri_jia": {
+      "category": "reference",
+      "columns": [
+        {
+          "cid": 0,
+          "name": "day_pillar",
+          "type": "TEXT",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 1
+        },
+        {
+          "cid": 1,
+          "name": "yin_yang",
+          "type": "TEXT",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 2
+        },
+        {
+          "cid": 2,
+          "name": "upper_ju",
+          "type": "INTEGER",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 3,
+          "name": "middle_ju",
+          "type": "INTEGER",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 4,
+          "name": "lower_ju",
+          "type": "INTEGER",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 0
+        }
+      ],
+      "row_count": 120,
+      "foreign_keys": []
+    },
+    "spr_solar_term": {
+      "category": "reference",
+      "columns": [
+        {
+          "cid": 0,
+          "name": "solar_term_id",
+          "type": "INTEGER",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 1
+        },
+        {
+          "cid": 1,
+          "name": "solar_term_char",
+          "type": "TEXT",
+          "notnull": 1,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 2,
+          "name": "solar_term_name_ru",
+          "type": "TEXT",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 3,
+          "name": "solar_term_pinyin",
+          "type": "TEXT",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 4,
+          "name": "longitude_deg",
+          "type": "INTEGER",
+          "notnull": 1,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 5,
+          "name": "month_branch_id",
+          "type": "INTEGER",
+          "notnull": 1,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 6,
+          "name": "upper_ju",
+          "type": "INTEGER",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 7,
+          "name": "middle_ju",
+          "type": "INTEGER",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 8,
+          "name": "lower_ju",
+          "type": "INTEGER",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 0
+        }
+      ],
+      "row_count": 24,
+      "foreign_keys": [
+        {
+          "id": 0,
+          "seq": 0,
+          "table": "spr_earthly_branch",
+          "from": "month_branch_id",
+          "to": "branch_id",
+          "on_update": "NO ACTION",
+          "on_delete": "NO ACTION"
+        }
+      ]
+    },
+    "spr_stars": {
+      "category": "reference",
+      "columns": [
+        {
+          "cid": 0,
+          "name": "id",
+          "type": "INTEGER",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 1
+        },
+        {
+          "cid": 1,
+          "name": "name_en",
+          "type": "TEXT",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 2,
+          "name": "name_ru",
+          "type": "TEXT",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 0
+        }
+      ],
+      "row_count": 9,
+      "foreign_keys": []
+    },
+    "spr_table_comment": {
+      "category": "reference",
+      "columns": [
+        {
+          "cid": 0,
+          "name": "table_name",
+          "type": "TEXT",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 1
+        },
+        {
+          "cid": 1,
+          "name": "comment_text",
+          "type": "TEXT",
+          "notnull": 1,
+          "dflt_value": null,
+          "pk": 0
+        }
+      ],
+      "row_count": 41,
+      "foreign_keys": []
+    },
+    "spr_tongshu_branch_combo_rule": {
+      "category": "reference",
+      "columns": [
+        {
+          "cid": 0,
+          "name": "rule_id",
+          "type": "INTEGER",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 1
+        },
+        {
+          "cid": 1,
+          "name": "combo_name",
+          "type": "TEXT",
+          "notnull": 1,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 2,
+          "name": "combo_type_id",
+          "type": "INTEGER",
+          "notnull": 1,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 3,
+          "name": "numeric_score",
+          "type": "REAL",
+          "notnull": 1,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 4,
+          "name": "item1",
+          "type": "TEXT",
+          "notnull": 1,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 5,
+          "name": "item2",
+          "type": "TEXT",
+          "notnull": 1,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 6,
+          "name": "item3",
+          "type": "TEXT",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 7,
+          "name": "description",
+          "type": "TEXT",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 0
+        }
+      ],
+      "row_count": 39,
+      "foreign_keys": []
+    },
+    "spr_tongshu_guigu_outcome": {
+      "category": "reference",
+      "columns": [
+        {
+          "cid": 0,
+          "name": "outcome_number",
+          "type": "INTEGER",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 1
+        },
+        {
+          "cid": 1,
+          "name": "name_ru",
+          "type": "TEXT",
+          "notnull": 1,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 2,
+          "name": "verdict_code",
+          "type": "TEXT",
+          "notnull": 1,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 3,
+          "name": "description_ru",
+          "type": "TEXT",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 4,
+          "name": "numeric_score",
+          "type": "REAL",
+          "notnull": 0,
+          "dflt_value": "0",
+          "pk": 0
+        }
+      ],
+      "row_count": 14,
+      "foreign_keys": []
+    },
+    "spr_tongshu_guigu_symbol": {
+      "category": "reference",
+      "columns": [
+        {
+          "cid": 0,
+          "name": "symbol_type",
+          "type": "TEXT",
+          "notnull": 1,
+          "dflt_value": null,
+          "pk": 1
+        },
+        {
+          "cid": 1,
+          "name": "symbol_char",
+          "type": "TEXT",
+          "notnull": 1,
+          "dflt_value": null,
+          "pk": 2
+        },
+        {
+          "cid": 2,
+          "name": "numeric_value",
+          "type": "INTEGER",
+          "notnull": 1,
+          "dflt_value": null,
+          "pk": 0
+        }
+      ],
+      "row_count": 0,
+      "foreign_keys": []
+    },
+    "spr_tongshu_jiazi_profile": {
+      "category": "reference",
+      "columns": [
+        {
+          "cid": 0,
+          "name": "cycle_index",
+          "type": "INTEGER",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 1
+        },
+        {
+          "cid": 1,
+          "name": "pillar_text",
+          "type": "TEXT",
+          "notnull": 1,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 2,
+          "name": "nayin_name",
+          "type": "TEXT",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 3,
+          "name": "nayin_element",
+          "type": "TEXT",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 4,
+          "name": "nayin_code",
+          "type": "TEXT",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 5,
+          "name": "dagua_element",
+          "type": "INTEGER",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 6,
+          "name": "dagua_period",
+          "type": "INTEGER",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 7,
+          "name": "family_code",
+          "type": "TEXT",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 8,
+          "name": "family_role",
+          "type": "TEXT",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 0
+        }
+      ],
+      "row_count": 0,
+      "foreign_keys": []
+    },
+    "spr_tongshu_phase": {
+      "category": "reference",
+      "columns": [
+        {
+          "cid": 0,
+          "name": "phase_id",
+          "type": "INTEGER",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 1
+        },
+        {
+          "cid": 1,
+          "name": "name_ru",
+          "type": "TEXT",
+          "notnull": 1,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 2,
+          "name": "numeric_score",
+          "type": "REAL",
+          "notnull": 1,
+          "dflt_value": null,
+          "pk": 0
+        }
+      ],
+      "row_count": 0,
+      "foreign_keys": []
+    },
+    "spr_tongshu_phase_mapping": {
+      "category": "reference",
+      "columns": [
+        {
+          "cid": 0,
+          "name": "day_stem",
+          "type": "TEXT",
+          "notnull": 1,
+          "dflt_value": null,
+          "pk": 1
+        },
+        {
+          "cid": 1,
+          "name": "phase_id",
+          "type": "INTEGER",
+          "notnull": 1,
+          "dflt_value": null,
+          "pk": 2
+        },
+        {
+          "cid": 2,
+          "name": "reference_branch",
+          "type": "TEXT",
+          "notnull": 1,
+          "dflt_value": null,
+          "pk": 0
+        }
+      ],
+      "row_count": 0,
+      "foreign_keys": [
+        {
+          "id": 0,
+          "seq": 0,
+          "table": "spr_tongshu_phase",
+          "from": "phase_id",
+          "to": "phase_id",
+          "on_update": "NO ACTION",
+          "on_delete": "NO ACTION"
+        }
+      ]
+    },
+    "spr_tongshu_shensha_rule": {
+      "category": "reference",
+      "columns": [
+        {
+          "cid": 0,
+          "name": "rule_id",
+          "type": "INTEGER",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 1
+        },
+        {
+          "cid": 1,
+          "name": "star_name",
+          "type": "TEXT",
+          "notnull": 1,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 2,
+          "name": "master_scope",
+          "type": "TEXT",
+          "notnull": 1,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 3,
+          "name": "master_value",
+          "type": "TEXT",
+          "notnull": 1,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 4,
+          "name": "target_scope",
+          "type": "TEXT",
+          "notnull": 1,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 5,
+          "name": "target_value",
+          "type": "TEXT",
+          "notnull": 1,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 6,
+          "name": "notes",
+          "type": "TEXT",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 0
+        }
+      ],
+      "row_count": 0,
+      "foreign_keys": []
+    },
+    "spr_tongshu_stem_combo_rule": {
+      "category": "reference",
+      "columns": [
+        {
+          "cid": 0,
+          "name": "rule_id",
+          "type": "INTEGER",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 1
+        },
+        {
+          "cid": 1,
+          "name": "combo_name",
+          "type": "TEXT",
+          "notnull": 1,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 2,
+          "name": "combo_type_id",
+          "type": "INTEGER",
+          "notnull": 1,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 3,
+          "name": "numeric_score",
+          "type": "REAL",
+          "notnull": 1,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 4,
+          "name": "item1",
+          "type": "TEXT",
+          "notnull": 1,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 5,
+          "name": "item2",
+          "type": "TEXT",
+          "notnull": 1,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 6,
+          "name": "description",
+          "type": "TEXT",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 0
+        }
+      ],
+      "row_count": 9,
+      "foreign_keys": []
+    },
+    "spr_tongshu_ten_god": {
+      "category": "reference",
+      "columns": [
+        {
+          "cid": 0,
+          "name": "day_stem",
+          "type": "TEXT",
+          "notnull": 1,
+          "dflt_value": null,
+          "pk": 1
+        },
+        {
+          "cid": 1,
+          "name": "god_code",
+          "type": "TEXT",
+          "notnull": 1,
+          "dflt_value": null,
+          "pk": 2
+        },
+        {
+          "cid": 2,
+          "name": "related_stem",
+          "type": "TEXT",
+          "notnull": 1,
+          "dflt_value": null,
+          "pk": 0
+        }
+      ],
+      "row_count": 0,
+      "foreign_keys": []
+    },
+    "spr_yellow_black_matrix": {
+      "category": "reference",
+      "columns": [
+        {
+          "cid": 0,
+          "name": "month_branch",
+          "type": "TEXT",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 1
+        },
+        {
+          "cid": 1,
+          "name": "day_branch",
+          "type": "TEXT",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 2
+        },
+        {
+          "cid": 2,
+          "name": "star_id",
+          "type": "INTEGER",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 0
+        }
+      ],
+      "row_count": 144,
+      "foreign_keys": []
+    },
+    "spr_yellow_black_stars": {
+      "category": "reference",
+      "columns": [
+        {
+          "cid": 0,
+          "name": "id",
+          "type": "INTEGER",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 1
+        },
+        {
+          "cid": 1,
+          "name": "name",
+          "type": "TEXT",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 2,
+          "name": "score",
+          "type": "REAL",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 0
+        }
+      ],
+      "row_count": 12,
+      "foreign_keys": []
+    },
+    "t_analysis_activation": {
+      "category": "main",
+      "columns": [
+        {
+          "cid": 0,
+          "name": "hour_id",
+          "type": "TEXT",
+          "notnull": 1,
+          "dflt_value": null,
+          "pk": 1
+        },
+        {
+          "cid": 1,
+          "name": "palace_no",
+          "type": "INTEGER",
+          "notnull": 1,
+          "dflt_value": null,
+          "pk": 2
+        },
+        {
+          "cid": 2,
+          "name": "rule_id",
+          "type": "TEXT",
+          "notnull": 1,
+          "dflt_value": null,
+          "pk": 3
+        },
+        {
+          "cid": 3,
+          "name": "score",
+          "type": "REAL",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 0
+        }
+      ],
+      "row_count": 0,
+      "foreign_keys": []
+    },
+    "t_analysis_date": {
+      "category": "main",
+      "columns": [
+        {
+          "cid": 0,
+          "name": "hour_id",
+          "type": "TEXT",
+          "notnull": 1,
+          "dflt_value": null,
+          "pk": 1
+        },
+        {
+          "cid": 1,
+          "name": "rule_id",
+          "type": "TEXT",
+          "notnull": 1,
+          "dflt_value": null,
+          "pk": 2
+        },
+        {
+          "cid": 2,
+          "name": "result_value",
+          "type": "TEXT",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 3,
+          "name": "score",
+          "type": "REAL",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 0
+        }
+      ],
+      "row_count": 14466428,
+      "foreign_keys": []
+    },
+    "t_analysis_direction": {
+      "category": "main",
+      "columns": [
+        {
+          "cid": 0,
+          "name": "hour_id",
+          "type": "TEXT",
+          "notnull": 1,
+          "dflt_value": null,
+          "pk": 1
+        },
+        {
+          "cid": 1,
+          "name": "palace_no",
+          "type": "INTEGER",
+          "notnull": 1,
+          "dflt_value": null,
+          "pk": 2
+        },
+        {
+          "cid": 2,
+          "name": "system_type",
+          "type": "TEXT",
+          "notnull": 1,
+          "dflt_value": null,
+          "pk": 3
+        },
+        {
+          "cid": 3,
+          "name": "chart_level",
+          "type": "TEXT",
+          "notnull": 1,
+          "dflt_value": null,
+          "pk": 4
+        },
+        {
+          "cid": 4,
+          "name": "rule_id",
+          "type": "TEXT",
+          "notnull": 1,
+          "dflt_value": null,
+          "pk": 5
+        },
+        {
+          "cid": 5,
+          "name": "result_value",
+          "type": "TEXT",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 6,
+          "name": "score",
+          "type": "REAL",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 0
+        }
+      ],
+      "row_count": 1793608,
+      "foreign_keys": []
+    },
+    "t_analyz_activation": {
+      "category": "main",
+      "columns": [
+        {
+          "cid": 0,
+          "name": "chart_id",
+          "type": "TEXT",
+          "notnull": 1,
+          "dflt_value": null,
+          "pk": 1
+        },
+        {
+          "cid": 1,
+          "name": "rule_id",
+          "type": "TEXT",
+          "notnull": 1,
+          "dflt_value": null,
+          "pk": 2
+        },
+        {
+          "cid": 2,
+          "name": "score",
+          "type": "REAL",
+          "notnull": 1,
+          "dflt_value": null,
+          "pk": 0
+        }
+      ],
+      "row_count": 0,
+      "foreign_keys": [
+        {
+          "id": 0,
+          "seq": 0,
+          "table": "t_rule_registry",
+          "from": "rule_id",
+          "to": "rule_id",
+          "on_update": "NO ACTION",
+          "on_delete": "NO ACTION"
+        }
+      ]
+    },
+    "t_analyz_data": {
+      "category": "main",
+      "columns": [
+        {
+          "cid": 0,
+          "name": "hour_id",
+          "type": "TEXT",
+          "notnull": 1,
+          "dflt_value": null,
+          "pk": 1
+        },
+        {
+          "cid": 1,
+          "name": "indicator_code",
+          "type": "TEXT",
+          "notnull": 1,
+          "dflt_value": null,
+          "pk": 2
+        },
+        {
+          "cid": 2,
+          "name": "value_text",
+          "type": "TEXT",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 3,
+          "name": "value_numeric",
+          "type": "REAL",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 4,
+          "name": "comment_text",
+          "type": "TEXT",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 0
+        }
+      ],
+      "row_count": 0,
+      "foreign_keys": [
+        {
+          "id": 0,
+          "seq": 0,
+          "table": "t_bazi_hourly",
+          "from": "hour_id",
+          "to": "hour_id",
+          "on_update": "NO ACTION",
+          "on_delete": "NO ACTION"
+        }
+      ]
+    },
+    "t_analyz_date": {
+      "category": "main",
+      "columns": [
+        {
+          "cid": 0,
+          "name": "hour_id",
+          "type": "TEXT",
+          "notnull": 1,
+          "dflt_value": null,
+          "pk": 1
+        },
+        {
+          "cid": 1,
+          "name": "rule_id",
+          "type": "TEXT",
+          "notnull": 1,
+          "dflt_value": null,
+          "pk": 2
+        },
+        {
+          "cid": 2,
+          "name": "result_value",
+          "type": "TEXT",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 3,
+          "name": "score",
+          "type": "REAL",
+          "notnull": 1,
+          "dflt_value": null,
+          "pk": 0
+        }
+      ],
+      "row_count": 0,
+      "foreign_keys": [
+        {
+          "id": 0,
+          "seq": 0,
+          "table": "t_rule_registry",
+          "from": "rule_id",
+          "to": "rule_id",
+          "on_update": "NO ACTION",
+          "on_delete": "NO ACTION"
+        },
+        {
+          "id": 1,
+          "seq": 0,
+          "table": "t_bazi_hourly",
+          "from": "hour_id",
+          "to": "hour_id",
+          "on_update": "NO ACTION",
+          "on_delete": "NO ACTION"
+        }
+      ]
+    },
+    "t_analyz_direction": {
+      "category": "main",
+      "columns": [
+        {
+          "cid": 0,
+          "name": "chart_id",
+          "type": "TEXT",
+          "notnull": 1,
+          "dflt_value": null,
+          "pk": 1
+        },
+        {
+          "cid": 1,
+          "name": "system_type",
+          "type": "TEXT",
+          "notnull": 1,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 2,
+          "name": "chart_level",
+          "type": "TEXT",
+          "notnull": 1,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 3,
+          "name": "rule_id",
+          "type": "TEXT",
+          "notnull": 1,
+          "dflt_value": null,
+          "pk": 2
+        },
+        {
+          "cid": 4,
+          "name": "result_value",
+          "type": "TEXT",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 5,
+          "name": "score",
+          "type": "REAL",
+          "notnull": 1,
+          "dflt_value": null,
+          "pk": 0
+        }
+      ],
+      "row_count": 34448,
+      "foreign_keys": [
+        {
+          "id": 0,
+          "seq": 0,
+          "table": "t_rule_registry",
+          "from": "rule_id",
+          "to": "rule_id",
+          "on_update": "NO ACTION",
+          "on_delete": "NO ACTION"
+        }
+      ]
+    },
+    "t_bazi_hourly": {
+      "category": "main",
+      "columns": [
+        {
+          "cid": 0,
+          "name": "hour_id",
+          "type": "TEXT",
+          "notnull": 1,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 1,
+          "name": "tz_offset_hours",
+          "type": "INTEGER",
+          "notnull": 1,
+          "dflt_value": null,
+          "pk": 1
+        },
+        {
+          "cid": 2,
+          "name": "slot_start_date_utc",
+          "type": "TEXT",
+          "notnull": 1,
+          "dflt_value": null,
+          "pk": 2
+        },
+        {
+          "cid": 3,
+          "name": "slot_start_time_utc",
+          "type": "TEXT",
+          "notnull": 1,
+          "dflt_value": null,
+          "pk": 3
+        },
+        {
+          "cid": 4,
+          "name": "slot_end_date_utc",
+          "type": "TEXT",
+          "notnull": 1,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 5,
+          "name": "slot_end_time_utc",
+          "type": "TEXT",
+          "notnull": 1,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 6,
+          "name": "slot_start_date_local",
+          "type": "TEXT",
+          "notnull": 1,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 7,
+          "name": "slot_start_time_local",
+          "type": "TEXT",
+          "notnull": 1,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 8,
+          "name": "slot_end_date_local",
+          "type": "TEXT",
+          "notnull": 1,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 9,
+          "name": "slot_end_time_local",
+          "type": "TEXT",
+          "notnull": 1,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 10,
+          "name": "weekday_local",
+          "type": "TEXT",
+          "notnull": 1,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 11,
+          "name": "solar_term_id",
+          "type": "INTEGER",
+          "notnull": 1,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 12,
+          "name": "year_pillar",
+          "type": "TEXT",
+          "notnull": 1,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 13,
+          "name": "month_pillar",
+          "type": "TEXT",
+          "notnull": 1,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 14,
+          "name": "day_pillar",
+          "type": "TEXT",
+          "notnull": 1,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 15,
+          "name": "hour_pillar",
+          "type": "TEXT",
+          "notnull": 1,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 16,
+          "name": "year_stem",
+          "type": "TEXT",
+          "notnull": 1,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 17,
+          "name": "year_branch",
+          "type": "TEXT",
+          "notnull": 1,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 18,
+          "name": "month_stem",
+          "type": "TEXT",
+          "notnull": 1,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 19,
+          "name": "month_branch",
+          "type": "TEXT",
+          "notnull": 1,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 20,
+          "name": "day_stem",
+          "type": "TEXT",
+          "notnull": 1,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 21,
+          "name": "day_branch",
+          "type": "TEXT",
+          "notnull": 1,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 22,
+          "name": "hour_stem",
+          "type": "TEXT",
+          "notnull": 1,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 23,
+          "name": "hour_branch",
+          "type": "TEXT",
+          "notnull": 1,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 24,
+          "name": "lunar_month",
+          "type": "INTEGER",
+          "notnull": 1,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 25,
+          "name": "lunar_day",
+          "type": "INTEGER",
+          "notnull": 1,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 26,
+          "name": "lunar_is_leap",
+          "type": "INTEGER",
+          "notnull": 1,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 27,
+          "name": "lunar_month_zi",
+          "type": "INTEGER",
+          "notnull": 1,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 28,
+          "name": "lunar_day_zi",
+          "type": "INTEGER",
+          "notnull": 1,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 29,
+          "name": "lunar_is_leap_zi",
+          "type": "INTEGER",
+          "notnull": 1,
+          "dflt_value": null,
+          "pk": 0
+        }
+      ],
+      "row_count": 354807,
+      "foreign_keys": [
+        {
+          "id": 0,
+          "seq": 0,
+          "table": "spr_solar_term",
+          "from": "solar_term_id",
+          "to": "solar_term_id",
+          "on_update": "NO ACTION",
+          "on_delete": "NO ACTION"
+        }
+      ]
+    },
+    "t_chart_analysis": {
+      "category": "main",
+      "columns": [
+        {
+          "cid": 0,
+          "name": "analysis_id",
+          "type": "INTEGER",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 1
+        },
+        {
+          "cid": 1,
+          "name": "tz_offset_hours",
+          "type": "INTEGER",
+          "notnull": 1,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 2,
+          "name": "datetime_utc",
+          "type": "TEXT",
+          "notnull": 1,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 3,
+          "name": "level",
+          "type": "TEXT",
+          "notnull": 1,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 4,
+          "name": "indicator_id",
+          "type": "INTEGER",
+          "notnull": 1,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 5,
+          "name": "rule_id",
+          "type": "INTEGER",
+          "notnull": 1,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 6,
+          "name": "result_value_id",
+          "type": "INTEGER",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 7,
+          "name": "result_text",
+          "type": "TEXT",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 8,
+          "name": "result_num",
+          "type": "REAL",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 9,
+          "name": "created_at",
+          "type": "TEXT",
+          "notnull": 1,
+          "dflt_value": "CURRENT_TIMESTAMP",
+          "pk": 0
+        }
+      ],
+      "row_count": 0,
+      "foreign_keys": [
+        {
+          "id": 0,
+          "seq": 0,
+          "table": "spr_indicator_value",
+          "from": "result_value_id",
+          "to": "value_id",
+          "on_update": "NO ACTION",
+          "on_delete": "NO ACTION"
+        },
+        {
+          "id": 1,
+          "seq": 0,
+          "table": "spr_indicator_rule",
+          "from": "rule_id",
+          "to": "rule_id",
+          "on_update": "NO ACTION",
+          "on_delete": "NO ACTION"
+        },
+        {
+          "id": 2,
+          "seq": 0,
+          "table": "spr_indicator",
+          "from": "indicator_id",
+          "to": "indicator_id",
+          "on_update": "NO ACTION",
+          "on_delete": "NO ACTION"
+        }
+      ]
+    },
+    "t_control_t_bazi_hourly": {
+      "category": "control",
+      "columns": [
+        {
+          "cid": 0,
+          "name": "hour_id",
+          "type": "TEXT",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 1,
+          "name": "tz_offset_hours",
+          "type": "INT",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 2,
+          "name": "slot_start_date_utc",
+          "type": "TEXT",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 3,
+          "name": "slot_start_time_utc",
+          "type": "TEXT",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 4,
+          "name": "slot_end_date_utc",
+          "type": "TEXT",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 5,
+          "name": "slot_end_time_utc",
+          "type": "TEXT",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 6,
+          "name": "slot_start_date_local",
+          "type": "TEXT",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 7,
+          "name": "slot_start_time_local",
+          "type": "TEXT",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 8,
+          "name": "slot_end_date_local",
+          "type": "TEXT",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 9,
+          "name": "slot_end_time_local",
+          "type": "TEXT",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 10,
+          "name": "weekday_local",
+          "type": "TEXT",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 11,
+          "name": "solar_term_id",
+          "type": "INT",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 12,
+          "name": "year_pillar",
+          "type": "TEXT",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 13,
+          "name": "month_pillar",
+          "type": "TEXT",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 14,
+          "name": "day_pillar",
+          "type": "TEXT",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 15,
+          "name": "hour_pillar",
+          "type": "TEXT",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 16,
+          "name": "year_stem",
+          "type": "TEXT",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 17,
+          "name": "year_branch",
+          "type": "TEXT",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 18,
+          "name": "month_stem",
+          "type": "TEXT",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 19,
+          "name": "month_branch",
+          "type": "TEXT",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 20,
+          "name": "day_stem",
+          "type": "TEXT",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 21,
+          "name": "day_branch",
+          "type": "TEXT",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 22,
+          "name": "hour_stem",
+          "type": "TEXT",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 23,
+          "name": "hour_branch",
+          "type": "TEXT",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 24,
+          "name": "lunar_month",
+          "type": "INT",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 25,
+          "name": "lunar_day",
+          "type": "INT",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 26,
+          "name": "lunar_is_leap",
+          "type": "INT",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 27,
+          "name": "lunar_month_zi",
+          "type": "INT",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 28,
+          "name": "lunar_day_zi",
+          "type": "INT",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 29,
+          "name": "lunar_is_leap_zi",
+          "type": "INT",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 0
+        }
+      ],
+      "row_count": 100,
+      "foreign_keys": []
+    },
+    "t_control_t_flying_stars": {
+      "category": "control",
+      "columns": [
+        {
+          "cid": 0,
+          "name": "hour_id",
+          "type": "TEXT",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 1,
+          "name": "palace",
+          "type": "INT",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 2,
+          "name": "year_star",
+          "type": "INT",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 3,
+          "name": "month_star",
+          "type": "INT",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 4,
+          "name": "day_star",
+          "type": "INT",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 5,
+          "name": "hour_star",
+          "type": "INT",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 0
+        }
+      ],
+      "row_count": 100,
+      "foreign_keys": []
+    },
+    "t_control_t_qumen_chauby_day": {
+      "category": "control",
+      "columns": [
+        {
+          "cid": 0,
+          "name": "chart_id",
+          "type": "TEXT",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 1,
+          "name": "year_pillar",
+          "type": "TEXT",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 2,
+          "name": "month_pillar",
+          "type": "TEXT",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 3,
+          "name": "day_pillar",
+          "type": "TEXT",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 4,
+          "name": "rasklad_id",
+          "type": "TEXT",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 5,
+          "name": "palace_no",
+          "type": "INT",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 6,
+          "name": "chart_type",
+          "type": "TEXT",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 0
+        }
+      ],
+      "row_count": 100,
+      "foreign_keys": []
+    },
+    "t_control_t_qumen_chauby_hourly": {
+      "category": "control",
+      "columns": [
+        {
+          "cid": 0,
+          "name": "chart_id",
+          "type": "TEXT",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 1,
+          "name": "hour_id",
+          "type": "TEXT",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 2,
+          "name": "rasklad_id",
+          "type": "TEXT",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 3,
+          "name": "palace_no",
+          "type": "INT",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 4,
+          "name": "chart_type",
+          "type": "TEXT",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 0
+        }
+      ],
+      "row_count": 100,
+      "foreign_keys": []
+    },
+    "t_control_t_qumen_chauby_month": {
+      "category": "control",
+      "columns": [
+        {
+          "cid": 0,
+          "name": "chart_id",
+          "type": "TEXT",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 1,
+          "name": "year_pillar",
+          "type": "TEXT",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 2,
+          "name": "month_pillar",
+          "type": "TEXT",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 3,
+          "name": "rasklad_id",
+          "type": "TEXT",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 4,
+          "name": "palace_no",
+          "type": "INT",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 5,
+          "name": "chart_type",
+          "type": "TEXT",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 0
+        }
+      ],
+      "row_count": 100,
+      "foreign_keys": []
+    },
+    "t_control_t_qumen_chauby_year": {
+      "category": "control",
+      "columns": [
+        {
+          "cid": 0,
+          "name": "chart_id",
+          "type": "TEXT",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 1,
+          "name": "year_pillar",
+          "type": "TEXT",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 2,
+          "name": "rasklad_id",
+          "type": "TEXT",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 3,
+          "name": "palace_no",
+          "type": "INT",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 4,
+          "name": "chart_type",
+          "type": "TEXT",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 0
+        }
+      ],
+      "row_count": 18,
+      "foreign_keys": []
+    },
+    "t_control_t_qumen_dgiren_day": {
+      "category": "control",
+      "columns": [
+        {
+          "cid": 0,
+          "name": "chart_id",
+          "type": "TEXT",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 1,
+          "name": "year_pillar",
+          "type": "TEXT",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 2,
+          "name": "month_pillar",
+          "type": "TEXT",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 3,
+          "name": "day_pillar",
+          "type": "TEXT",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 4,
+          "name": "rasklad_id",
+          "type": "TEXT",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 5,
+          "name": "palace_no",
+          "type": "INT",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 6,
+          "name": "chart_type",
+          "type": "TEXT",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 0
+        }
+      ],
+      "row_count": 100,
+      "foreign_keys": []
+    },
+    "t_control_t_qumen_dgiren_hourly": {
+      "category": "control",
+      "columns": [
+        {
+          "cid": 0,
+          "name": "chart_id",
+          "type": "TEXT",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 1,
+          "name": "hour_id",
+          "type": "TEXT",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 2,
+          "name": "rasklad_id",
+          "type": "TEXT",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 3,
+          "name": "palace_no",
+          "type": "INT",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 4,
+          "name": "chart_type",
+          "type": "TEXT",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 0
+        }
+      ],
+      "row_count": 100,
+      "foreign_keys": []
+    },
+    "t_control_t_qumen_dgiren_month": {
+      "category": "control",
+      "columns": [
+        {
+          "cid": 0,
+          "name": "chart_id",
+          "type": "TEXT",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 1,
+          "name": "year_pillar",
+          "type": "TEXT",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 2,
+          "name": "month_pillar",
+          "type": "TEXT",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 3,
+          "name": "rasklad_id",
+          "type": "TEXT",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 4,
+          "name": "palace_no",
+          "type": "INT",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 5,
+          "name": "chart_type",
+          "type": "TEXT",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 0
+        }
+      ],
+      "row_count": 100,
+      "foreign_keys": []
+    },
+    "t_control_t_qumen_dgiren_year": {
+      "category": "control",
+      "columns": [
+        {
+          "cid": 0,
+          "name": "chart_id",
+          "type": "TEXT",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 1,
+          "name": "year_pillar",
+          "type": "TEXT",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 2,
+          "name": "rasklad_id",
+          "type": "TEXT",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 3,
+          "name": "palace_no",
+          "type": "INT",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 4,
+          "name": "chart_type",
+          "type": "TEXT",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 0
+        }
+      ],
+      "row_count": 18,
+      "foreign_keys": []
+    },
+    "t_flying_stars": {
+      "category": "main",
+      "columns": [
+        {
+          "cid": 0,
+          "name": "hour_id",
+          "type": "TEXT",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 1,
+          "name": "palace",
+          "type": "INTEGER",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 2,
+          "name": "year_star",
+          "type": "INTEGER",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 3,
+          "name": "month_star",
+          "type": "INTEGER",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 4,
+          "name": "day_star",
+          "type": "INTEGER",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 5,
+          "name": "hour_star",
+          "type": "INTEGER",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 0
+        }
+      ],
+      "row_count": 2017809,
+      "foreign_keys": []
+    },
+    "t_qumen_chauby_day": {
+      "category": "main",
+      "columns": [
+        {
+          "cid": 0,
+          "name": "chart_id",
+          "type": "TEXT",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 1
+        },
+        {
+          "cid": 1,
+          "name": "year_pillar",
+          "type": "TEXT",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 2,
+          "name": "month_pillar",
+          "type": "TEXT",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 3,
+          "name": "day_pillar",
+          "type": "TEXT",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 4,
+          "name": "rasklad_id",
+          "type": "TEXT",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 5,
+          "name": "palace_no",
+          "type": "INTEGER",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 6,
+          "name": "chart_type",
+          "type": "TEXT",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 0
+        }
+      ],
+      "row_count": 6642,
+      "foreign_keys": []
+    },
+    "t_qumen_chauby_hourly": {
+      "category": "main",
+      "columns": [
+        {
+          "cid": 0,
+          "name": "chart_id",
+          "type": "TEXT",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 1
+        },
+        {
+          "cid": 1,
+          "name": "hour_id",
+          "type": "TEXT",
+          "notnull": 1,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 2,
+          "name": "rasklad_id",
+          "type": "TEXT",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 3,
+          "name": "palace_no",
+          "type": "INTEGER",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 4,
+          "name": "chart_type",
+          "type": "TEXT",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 0
+        }
+      ],
+      "row_count": 2017809,
+      "foreign_keys": []
+    },
+    "t_qumen_chauby_month": {
+      "category": "main",
+      "columns": [
+        {
+          "cid": 0,
+          "name": "chart_id",
+          "type": "TEXT",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 1
+        },
+        {
+          "cid": 1,
+          "name": "year_pillar",
+          "type": "TEXT",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 2,
+          "name": "month_pillar",
+          "type": "TEXT",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 3,
+          "name": "rasklad_id",
+          "type": "TEXT",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 4,
+          "name": "palace_no",
+          "type": "INTEGER",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 5,
+          "name": "chart_type",
+          "type": "TEXT",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 0
+        }
+      ],
+      "row_count": 207,
+      "foreign_keys": []
+    },
+    "t_qumen_chauby_year": {
+      "category": "main",
+      "columns": [
+        {
+          "cid": 0,
+          "name": "chart_id",
+          "type": "TEXT",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 1
+        },
+        {
+          "cid": 1,
+          "name": "year_pillar",
+          "type": "TEXT",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 2,
+          "name": "rasklad_id",
+          "type": "TEXT",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 3,
+          "name": "palace_no",
+          "type": "INTEGER",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 4,
+          "name": "chart_type",
+          "type": "TEXT",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 0
+        }
+      ],
+      "row_count": 18,
+      "foreign_keys": []
+    },
+    "t_qumen_dgiren_day": {
+      "category": "main",
+      "columns": [
+        {
+          "cid": 0,
+          "name": "chart_id",
+          "type": "TEXT",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 1
+        },
+        {
+          "cid": 1,
+          "name": "year_pillar",
+          "type": "TEXT",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 2,
+          "name": "month_pillar",
+          "type": "TEXT",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 3,
+          "name": "day_pillar",
+          "type": "TEXT",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 4,
+          "name": "rasklad_id",
+          "type": "TEXT",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 5,
+          "name": "palace_no",
+          "type": "INTEGER",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 6,
+          "name": "chart_type",
+          "type": "TEXT",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 0
+        }
+      ],
+      "row_count": 6642,
+      "foreign_keys": []
+    },
+    "t_qumen_dgiren_hourly": {
+      "category": "main",
+      "columns": [
+        {
+          "cid": 0,
+          "name": "chart_id",
+          "type": "TEXT",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 1
+        },
+        {
+          "cid": 1,
+          "name": "hour_id",
+          "type": "TEXT",
+          "notnull": 1,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 2,
+          "name": "rasklad_id",
+          "type": "TEXT",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 3,
+          "name": "palace_no",
+          "type": "INTEGER",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 4,
+          "name": "chart_type",
+          "type": "TEXT",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 0
+        }
+      ],
+      "row_count": 2017809,
+      "foreign_keys": []
+    },
+    "t_qumen_dgiren_month": {
+      "category": "main",
+      "columns": [
+        {
+          "cid": 0,
+          "name": "chart_id",
+          "type": "TEXT",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 1
+        },
+        {
+          "cid": 1,
+          "name": "year_pillar",
+          "type": "TEXT",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 2,
+          "name": "month_pillar",
+          "type": "TEXT",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 3,
+          "name": "rasklad_id",
+          "type": "TEXT",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 4,
+          "name": "palace_no",
+          "type": "INTEGER",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 5,
+          "name": "chart_type",
+          "type": "TEXT",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 0
+        }
+      ],
+      "row_count": 207,
+      "foreign_keys": []
+    },
+    "t_qumen_dgiren_year": {
+      "category": "main",
+      "columns": [
+        {
+          "cid": 0,
+          "name": "chart_id",
+          "type": "TEXT",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 1
+        },
+        {
+          "cid": 1,
+          "name": "year_pillar",
+          "type": "TEXT",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 2,
+          "name": "rasklad_id",
+          "type": "TEXT",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 3,
+          "name": "palace_no",
+          "type": "INTEGER",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 4,
+          "name": "chart_type",
+          "type": "TEXT",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 0
+        }
+      ],
+      "row_count": 18,
+      "foreign_keys": []
+    },
+    "t_rule_registry": {
+      "category": "main",
+      "columns": [
+        {
+          "cid": 0,
+          "name": "rule_id",
+          "type": "TEXT",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 1
+        },
+        {
+          "cid": 1,
+          "name": "name_ru",
+          "type": "TEXT",
+          "notnull": 1,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 2,
+          "name": "predicate_code",
+          "type": "TEXT",
+          "notnull": 1,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 3,
+          "name": "params_json",
+          "type": "TEXT",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 4,
+          "name": "score_base",
+          "type": "REAL",
+          "notnull": 0,
+          "dflt_value": "0",
+          "pk": 0
+        },
+        {
+          "cid": 5,
+          "name": "score_formula",
+          "type": "TEXT",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 6,
+          "name": "description",
+          "type": "TEXT",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 7,
+          "name": "is_active",
+          "type": "INTEGER",
+          "notnull": 0,
+          "dflt_value": "1",
+          "pk": 0
+        }
+      ],
+      "row_count": 147,
+      "foreign_keys": []
+    },
+    "t_rule_scope": {
+      "category": "main",
+      "columns": [
+        {
+          "cid": 0,
+          "name": "rule_id",
+          "type": "TEXT",
+          "notnull": 1,
+          "dflt_value": null,
+          "pk": 1
+        },
+        {
+          "cid": 1,
+          "name": "scope_type",
+          "type": "TEXT",
+          "notnull": 1,
+          "dflt_value": null,
+          "pk": 2
+        },
+        {
+          "cid": 2,
+          "name": "is_stop",
+          "type": "INTEGER",
+          "notnull": 0,
+          "dflt_value": "0",
+          "pk": 0
+        }
+      ],
+      "row_count": 155,
+      "foreign_keys": [
+        {
+          "id": 0,
+          "seq": 0,
+          "table": "t_rule_registry",
+          "from": "rule_id",
+          "to": "rule_id",
+          "on_update": "NO ACTION",
+          "on_delete": "NO ACTION"
+        }
+      ]
+    },
+    "t_solar_term_time": {
+      "category": "main",
+      "columns": [
+        {
+          "cid": 0,
+          "name": "year",
+          "type": "INTEGER",
+          "notnull": 1,
+          "dflt_value": null,
+          "pk": 1
+        },
+        {
+          "cid": 1,
+          "name": "solar_term_id",
+          "type": "INTEGER",
+          "notnull": 1,
+          "dflt_value": null,
+          "pk": 2
+        },
+        {
+          "cid": 2,
+          "name": "longitude_deg",
+          "type": "INTEGER",
+          "notnull": 1,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 3,
+          "name": "crossing_utc",
+          "type": "TIMESTAMP",
+          "notnull": 1,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 4,
+          "name": "crossing_gmt0",
+          "type": "TIMESTAMP",
+          "notnull": 1,
+          "dflt_value": null,
+          "pk": 0
+        }
+      ],
+      "row_count": 3960,
+      "foreign_keys": [
+        {
+          "id": 0,
+          "seq": 0,
+          "table": "spr_solar_term",
+          "from": "solar_term_id",
+          "to": "solar_term_id",
+          "on_update": "NO ACTION",
+          "on_delete": "NO ACTION"
+        }
+      ]
+    },
+    "t_solar_term_time_hko": {
+      "category": "main",
+      "columns": [
+        {
+          "cid": 0,
+          "name": "year",
+          "type": "INTEGER",
+          "notnull": 1,
+          "dflt_value": null,
+          "pk": 1
+        },
+        {
+          "cid": 1,
+          "name": "solar_term_id",
+          "type": "INTEGER",
+          "notnull": 1,
+          "dflt_value": null,
+          "pk": 2
+        },
+        {
+          "cid": 2,
+          "name": "longitude_deg",
+          "type": "INTEGER",
+          "notnull": 1,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 3,
+          "name": "crossing_hkt",
+          "type": "TIMESTAMP",
+          "notnull": 1,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 4,
+          "name": "crossing_utc",
+          "type": "TIMESTAMP",
+          "notnull": 1,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 5,
+          "name": "tz_offset_hours",
+          "type": "INTEGER",
+          "notnull": 1,
+          "dflt_value": "8",
+          "pk": 0
+        }
+      ],
+      "row_count": 72,
+      "foreign_keys": []
+    },
+    "t_sys_calculation_log": {
+      "category": "main",
+      "columns": [
+        {
+          "cid": 0,
+          "name": "id",
+          "type": "INTEGER",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 1
+        },
+        {
+          "cid": 1,
+          "name": "stage_name",
+          "type": "TEXT",
+          "notnull": 1,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 2,
+          "name": "start_dt",
+          "type": "TEXT",
+          "notnull": 1,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 3,
+          "name": "end_dt",
+          "type": "TEXT",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 4,
+          "name": "duration_sec",
+          "type": "REAL",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 5,
+          "name": "record_count",
+          "type": "INTEGER",
+          "notnull": 0,
+          "dflt_value": "0",
+          "pk": 0
+        },
+        {
+          "cid": 6,
+          "name": "status",
+          "type": "TEXT",
+          "notnull": 0,
+          "dflt_value": "'RUNNING'",
+          "pk": 0
+        },
+        {
+          "cid": 7,
+          "name": "error_msg",
+          "type": "TEXT",
+          "notnull": 0,
+          "dflt_value": null,
+          "pk": 0
+        }
+      ],
+      "row_count": 109,
+      "foreign_keys": []
+    },
+    "t_time_grid_hourly": {
+      "category": "main",
+      "columns": [
+        {
+          "cid": 0,
+          "name": "dt_utc",
+          "type": "TIMESTAMP",
+          "notnull": 1,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 1,
+          "name": "dt_gmt0",
+          "type": "TIMESTAMP",
+          "notnull": 1,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 2,
+          "name": "year",
+          "type": "INTEGER",
+          "notnull": 1,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 3,
+          "name": "month",
+          "type": "INTEGER",
+          "notnull": 1,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 4,
+          "name": "day",
+          "type": "INTEGER",
+          "notnull": 1,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 5,
+          "name": "hour",
+          "type": "INTEGER",
+          "notnull": 1,
+          "dflt_value": null,
+          "pk": 0
+        },
+        {
+          "cid": 6,
+          "name": "weekday",
+          "type": "INTEGER",
+          "notnull": 1,
+          "dflt_value": null,
+          "pk": 0
+        }
+      ],
+      "row_count": 0,
+      "foreign_keys": []
+    }
+  },
+  "views": [
+    {
+      "name": "v_bazi_hourly",
+      "sql": "CREATE VIEW v_bazi_hourly AS\n        SELECT\n            t.hour_id,\n            t.tz_offset_hours,\n            t.slot_start_date_utc,\n            t.slot_start_time_utc,\n            t.slot_end_date_utc,\n            t.slot_end_time_utc,\n            t.slot_start_date_local,\n            t.slot_start_time_local,\n            t.slot_end_date_local,\n            t.slot_end_time_local,\n            t.weekday_local,\n            t.solar_term_id,\n            st.solar_term_name_ru AS solar_term_name_ru,\n            -- t.solar_term_name removed\n            t.year_pillar,\n            t.month_pillar,\n            t.day_pillar,\n            t.hour_pillar,\n            t.year_stem,\n            t.year_branch,\n            t.month_stem,\n            t.month_branch,\n            t.day_stem,\n            t.day_branch,\n            t.hour_stem,\n            t.hour_branch AS hour_branch_char,\n            t.lunar_month,\n            t.lunar_day,\n            t.lunar_is_leap,\n            t.lunar_month_zi,\n            t.lunar_day_zi,\n            t.lunar_is_leap_zi,\n            eb.branch_rus AS hour_name_ru\n        FROM t_bazi_hourly AS t\n        LEFT JOIN spr_solar_term AS st\n               ON st.solar_term_id = t.solar_term_id\n        LEFT JOIN spr_earthly_branch AS eb\n               ON eb.branch_char = t.hour_branch\n        WHERE 1 = 1\n          AND t.slot_start_date_utc >= date('now')\n        ORDER BY t.tz_offset_hours, t.slot_start_date_utc, t.slot_start_time_utc"
+    },
+    {
+      "name": "v_bazi_hourly_msk",
+      "sql": "CREATE VIEW v_bazi_hourly_msk AS\n        SELECT\n            tz.hour_id,\n            tz.slot_start_date_local AS slot_start_date_msk,\n            tz.slot_start_time_local AS slot_start_time_msk,\n          --  tz.slot_end_date_local AS slot_end_date_msk,\n            --tz.slot_end_time_local AS slot_end_time_msk,\n            tz.slot_start_date_utc,\n            tz.slot_start_time_utc,\n            tz.slot_end_date_utc,\n            tz.slot_end_time_utc,\n            tz.weekday_local AS weekday_msk,\n            tz.hour_name_ru,\n            tz.hour_branch_char,\n            tz.solar_term_id,\n            tz.solar_term_name_ru,\n            -- tz.solar_term_name removed\n            tz.year_pillar,\n            tz.month_pillar,\n            tz.day_pillar,\n            tz.hour_pillar,\n            tz.year_stem,\n            tz.year_branch,\n            tz.month_stem,\n            tz.month_branch,\n            tz.day_stem,\n            tz.day_branch,\n            tz.hour_stem,\n            tz.hour_branch,\n            tz.lunar_month,\n            tz.lunar_day,\n            tz.lunar_is_leap,\n            tz.lunar_month_zi,\n            tz.lunar_day_zi,\n            tz.lunar_is_leap_zi\n        FROM v_bazi_hourly_tz_p03 AS tz\r\n        where 1 = 1 \r\n        and slot_start_date_local >= current_date\r\n        \n        ORDER BY slot_start_date_msk, slot_start_time_msk"
+    },
+    {
+      "name": "v_bazi_hourly_tz_m01",
+      "sql": "CREATE VIEW v_bazi_hourly_tz_m01 AS\n            SELECT\n                v.hour_id,\n                v.slot_start_date_local,\n                v.slot_start_time_local,\n                v.slot_end_date_local,\n                v.slot_end_time_local,\n                v.slot_start_date_utc,\n                v.slot_start_time_utc,\n                v.slot_end_date_utc,\n                v.slot_end_time_utc,\n                v.weekday_local,\n                v.hour_name_ru,\n                v.hour_branch_char,\n                v.solar_term_id,\n                v.solar_term_name_ru,\n                -- v.solar_term_name removed\n                v.year_pillar,\n                v.month_pillar,\n                v.day_pillar,\n                v.hour_pillar,\n                v.year_stem,\n                v.year_branch,\n                v.month_stem,\n                v.month_branch,\n                v.day_stem,\n                v.day_branch,\n                v.hour_stem,\n                v.hour_branch_char AS hour_branch,\n                v.lunar_month,\n                v.lunar_day,\n                v.lunar_is_leap,\n                v.lunar_month_zi,\n                v.lunar_day_zi,\n                v.lunar_is_leap_zi\n            FROM v_bazi_hourly AS v\n            WHERE v.tz_offset_hours = -1\n            ORDER BY v.slot_start_date_local, v.slot_start_time_local"
+    },
+    {
+      "name": "v_bazi_hourly_tz_m02",
+      "sql": "CREATE VIEW v_bazi_hourly_tz_m02 AS\n            SELECT\n                v.hour_id,\n                v.slot_start_date_local,\n                v.slot_start_time_local,\n                v.slot_end_date_local,\n                v.slot_end_time_local,\n                v.slot_start_date_utc,\n                v.slot_start_time_utc,\n                v.slot_end_date_utc,\n                v.slot_end_time_utc,\n                v.weekday_local,\n                v.hour_name_ru,\n                v.hour_branch_char,\n                v.solar_term_id,\n                v.solar_term_name_ru,\n                -- v.solar_term_name removed\n                v.year_pillar,\n                v.month_pillar,\n                v.day_pillar,\n                v.hour_pillar,\n                v.year_stem,\n                v.year_branch,\n                v.month_stem,\n                v.month_branch,\n                v.day_stem,\n                v.day_branch,\n                v.hour_stem,\n                v.hour_branch_char AS hour_branch,\n                v.lunar_month,\n                v.lunar_day,\n                v.lunar_is_leap,\n                v.lunar_month_zi,\n                v.lunar_day_zi,\n                v.lunar_is_leap_zi\n            FROM v_bazi_hourly AS v\n            WHERE v.tz_offset_hours = -2\n            ORDER BY v.slot_start_date_local, v.slot_start_time_local"
+    },
+    {
+      "name": "v_bazi_hourly_tz_m03",
+      "sql": "CREATE VIEW v_bazi_hourly_tz_m03 AS\n            SELECT\n                v.hour_id,\n                v.slot_start_date_local,\n                v.slot_start_time_local,\n                v.slot_end_date_local,\n                v.slot_end_time_local,\n                v.slot_start_date_utc,\n                v.slot_start_time_utc,\n                v.slot_end_date_utc,\n                v.slot_end_time_utc,\n                v.weekday_local,\n                v.hour_name_ru,\n                v.hour_branch_char,\n                v.solar_term_id,\n                v.solar_term_name_ru,\n                -- v.solar_term_name removed\n                v.year_pillar,\n                v.month_pillar,\n                v.day_pillar,\n                v.hour_pillar,\n                v.year_stem,\n                v.year_branch,\n                v.month_stem,\n                v.month_branch,\n                v.day_stem,\n                v.day_branch,\n                v.hour_stem,\n                v.hour_branch_char AS hour_branch,\n                v.lunar_month,\n                v.lunar_day,\n                v.lunar_is_leap,\n                v.lunar_month_zi,\n                v.lunar_day_zi,\n                v.lunar_is_leap_zi\n            FROM v_bazi_hourly AS v\n            WHERE v.tz_offset_hours = -3\n            ORDER BY v.slot_start_date_local, v.slot_start_time_local"
+    },
+    {
+      "name": "v_bazi_hourly_tz_m04",
+      "sql": "CREATE VIEW v_bazi_hourly_tz_m04 AS\n            SELECT\n                v.hour_id,\n                v.slot_start_date_local,\n                v.slot_start_time_local,\n                v.slot_end_date_local,\n                v.slot_end_time_local,\n                v.slot_start_date_utc,\n                v.slot_start_time_utc,\n                v.slot_end_date_utc,\n                v.slot_end_time_utc,\n                v.weekday_local,\n                v.hour_name_ru,\n                v.hour_branch_char,\n                v.solar_term_id,\n                v.solar_term_name_ru,\n                -- v.solar_term_name removed\n                v.year_pillar,\n                v.month_pillar,\n                v.day_pillar,\n                v.hour_pillar,\n                v.year_stem,\n                v.year_branch,\n                v.month_stem,\n                v.month_branch,\n                v.day_stem,\n                v.day_branch,\n                v.hour_stem,\n                v.hour_branch_char AS hour_branch,\n                v.lunar_month,\n                v.lunar_day,\n                v.lunar_is_leap,\n                v.lunar_month_zi,\n                v.lunar_day_zi,\n                v.lunar_is_leap_zi\n            FROM v_bazi_hourly AS v\n            WHERE v.tz_offset_hours = -4\n            ORDER BY v.slot_start_date_local, v.slot_start_time_local"
+    },
+    {
+      "name": "v_bazi_hourly_tz_m05",
+      "sql": "CREATE VIEW v_bazi_hourly_tz_m05 AS\n            SELECT\n                v.hour_id,\n                v.slot_start_date_local,\n                v.slot_start_time_local,\n                v.slot_end_date_local,\n                v.slot_end_time_local,\n                v.slot_start_date_utc,\n                v.slot_start_time_utc,\n                v.slot_end_date_utc,\n                v.slot_end_time_utc,\n                v.weekday_local,\n                v.hour_name_ru,\n                v.hour_branch_char,\n                v.solar_term_id,\n                v.solar_term_name_ru,\n                -- v.solar_term_name removed\n                v.year_pillar,\n                v.month_pillar,\n                v.day_pillar,\n                v.hour_pillar,\n                v.year_stem,\n                v.year_branch,\n                v.month_stem,\n                v.month_branch,\n                v.day_stem,\n                v.day_branch,\n                v.hour_stem,\n                v.hour_branch_char AS hour_branch,\n                v.lunar_month,\n                v.lunar_day,\n                v.lunar_is_leap,\n                v.lunar_month_zi,\n                v.lunar_day_zi,\n                v.lunar_is_leap_zi\n            FROM v_bazi_hourly AS v\n            WHERE v.tz_offset_hours = -5\n            ORDER BY v.slot_start_date_local, v.slot_start_time_local"
+    },
+    {
+      "name": "v_bazi_hourly_tz_m06",
+      "sql": "CREATE VIEW v_bazi_hourly_tz_m06 AS\n            SELECT\n                v.hour_id,\n                v.slot_start_date_local,\n                v.slot_start_time_local,\n                v.slot_end_date_local,\n                v.slot_end_time_local,\n                v.slot_start_date_utc,\n                v.slot_start_time_utc,\n                v.slot_end_date_utc,\n                v.slot_end_time_utc,\n                v.weekday_local,\n                v.hour_name_ru,\n                v.hour_branch_char,\n                v.solar_term_id,\n                v.solar_term_name_ru,\n                -- v.solar_term_name removed\n                v.year_pillar,\n                v.month_pillar,\n                v.day_pillar,\n                v.hour_pillar,\n                v.year_stem,\n                v.year_branch,\n                v.month_stem,\n                v.month_branch,\n                v.day_stem,\n                v.day_branch,\n                v.hour_stem,\n                v.hour_branch_char AS hour_branch,\n                v.lunar_month,\n                v.lunar_day,\n                v.lunar_is_leap,\n                v.lunar_month_zi,\n                v.lunar_day_zi,\n                v.lunar_is_leap_zi\n            FROM v_bazi_hourly AS v\n            WHERE v.tz_offset_hours = -6\n            ORDER BY v.slot_start_date_local, v.slot_start_time_local"
+    },
+    {
+      "name": "v_bazi_hourly_tz_m07",
+      "sql": "CREATE VIEW v_bazi_hourly_tz_m07 AS\n            SELECT\n                v.hour_id,\n                v.slot_start_date_local,\n                v.slot_start_time_local,\n                v.slot_end_date_local,\n                v.slot_end_time_local,\n                v.slot_start_date_utc,\n                v.slot_start_time_utc,\n                v.slot_end_date_utc,\n                v.slot_end_time_utc,\n                v.weekday_local,\n                v.hour_name_ru,\n                v.hour_branch_char,\n                v.solar_term_id,\n                v.solar_term_name_ru,\n                -- v.solar_term_name removed\n                v.year_pillar,\n                v.month_pillar,\n                v.day_pillar,\n                v.hour_pillar,\n                v.year_stem,\n                v.year_branch,\n                v.month_stem,\n                v.month_branch,\n                v.day_stem,\n                v.day_branch,\n                v.hour_stem,\n                v.hour_branch_char AS hour_branch,\n                v.lunar_month,\n                v.lunar_day,\n                v.lunar_is_leap,\n                v.lunar_month_zi,\n                v.lunar_day_zi,\n                v.lunar_is_leap_zi\n            FROM v_bazi_hourly AS v\n            WHERE v.tz_offset_hours = -7\n            ORDER BY v.slot_start_date_local, v.slot_start_time_local"
+    },
+    {
+      "name": "v_bazi_hourly_tz_m08",
+      "sql": "CREATE VIEW v_bazi_hourly_tz_m08 AS\n            SELECT\n                v.hour_id,\n                v.slot_start_date_local,\n                v.slot_start_time_local,\n                v.slot_end_date_local,\n                v.slot_end_time_local,\n                v.slot_start_date_utc,\n                v.slot_start_time_utc,\n                v.slot_end_date_utc,\n                v.slot_end_time_utc,\n                v.weekday_local,\n                v.hour_name_ru,\n                v.hour_branch_char,\n                v.solar_term_id,\n                v.solar_term_name_ru,\n                -- v.solar_term_name removed\n                v.year_pillar,\n                v.month_pillar,\n                v.day_pillar,\n                v.hour_pillar,\n                v.year_stem,\n                v.year_branch,\n                v.month_stem,\n                v.month_branch,\n                v.day_stem,\n                v.day_branch,\n                v.hour_stem,\n                v.hour_branch_char AS hour_branch,\n                v.lunar_month,\n                v.lunar_day,\n                v.lunar_is_leap,\n                v.lunar_month_zi,\n                v.lunar_day_zi,\n                v.lunar_is_leap_zi\n            FROM v_bazi_hourly AS v\n            WHERE v.tz_offset_hours = -8\n            ORDER BY v.slot_start_date_local, v.slot_start_time_local"
+    },
+    {
+      "name": "v_bazi_hourly_tz_m09",
+      "sql": "CREATE VIEW v_bazi_hourly_tz_m09 AS\n            SELECT\n                v.hour_id,\n                v.slot_start_date_local,\n                v.slot_start_time_local,\n                v.slot_end_date_local,\n                v.slot_end_time_local,\n                v.slot_start_date_utc,\n                v.slot_start_time_utc,\n                v.slot_end_date_utc,\n                v.slot_end_time_utc,\n                v.weekday_local,\n                v.hour_name_ru,\n                v.hour_branch_char,\n                v.solar_term_id,\n                v.solar_term_name_ru,\n                -- v.solar_term_name removed\n                v.year_pillar,\n                v.month_pillar,\n                v.day_pillar,\n                v.hour_pillar,\n                v.year_stem,\n                v.year_branch,\n                v.month_stem,\n                v.month_branch,\n                v.day_stem,\n                v.day_branch,\n                v.hour_stem,\n                v.hour_branch_char AS hour_branch,\n                v.lunar_month,\n                v.lunar_day,\n                v.lunar_is_leap,\n                v.lunar_month_zi,\n                v.lunar_day_zi,\n                v.lunar_is_leap_zi\n            FROM v_bazi_hourly AS v\n            WHERE v.tz_offset_hours = -9\n            ORDER BY v.slot_start_date_local, v.slot_start_time_local"
+    },
+    {
+      "name": "v_bazi_hourly_tz_m10",
+      "sql": "CREATE VIEW v_bazi_hourly_tz_m10 AS\n            SELECT\n                v.hour_id,\n                v.slot_start_date_local,\n                v.slot_start_time_local,\n                v.slot_end_date_local,\n                v.slot_end_time_local,\n                v.slot_start_date_utc,\n                v.slot_start_time_utc,\n                v.slot_end_date_utc,\n                v.slot_end_time_utc,\n                v.weekday_local,\n                v.hour_name_ru,\n                v.hour_branch_char,\n                v.solar_term_id,\n                v.solar_term_name_ru,\n                -- v.solar_term_name removed\n                v.year_pillar,\n                v.month_pillar,\n                v.day_pillar,\n                v.hour_pillar,\n                v.year_stem,\n                v.year_branch,\n                v.month_stem,\n                v.month_branch,\n                v.day_stem,\n                v.day_branch,\n                v.hour_stem,\n                v.hour_branch_char AS hour_branch,\n                v.lunar_month,\n                v.lunar_day,\n                v.lunar_is_leap,\n                v.lunar_month_zi,\n                v.lunar_day_zi,\n                v.lunar_is_leap_zi\n            FROM v_bazi_hourly AS v\n            WHERE v.tz_offset_hours = -10\n            ORDER BY v.slot_start_date_local, v.slot_start_time_local"
+    },
+    {
+      "name": "v_bazi_hourly_tz_m11",
+      "sql": "CREATE VIEW v_bazi_hourly_tz_m11 AS\n            SELECT\n                v.hour_id,\n                v.slot_start_date_local,\n                v.slot_start_time_local,\n                v.slot_end_date_local,\n                v.slot_end_time_local,\n                v.slot_start_date_utc,\n                v.slot_start_time_utc,\n                v.slot_end_date_utc,\n                v.slot_end_time_utc,\n                v.weekday_local,\n                v.hour_name_ru,\n                v.hour_branch_char,\n                v.solar_term_id,\n                v.solar_term_name_ru,\n                -- v.solar_term_name removed\n                v.year_pillar,\n                v.month_pillar,\n                v.day_pillar,\n                v.hour_pillar,\n                v.year_stem,\n                v.year_branch,\n                v.month_stem,\n                v.month_branch,\n                v.day_stem,\n                v.day_branch,\n                v.hour_stem,\n                v.hour_branch_char AS hour_branch,\n                v.lunar_month,\n                v.lunar_day,\n                v.lunar_is_leap,\n                v.lunar_month_zi,\n                v.lunar_day_zi,\n                v.lunar_is_leap_zi\n            FROM v_bazi_hourly AS v\n            WHERE v.tz_offset_hours = -11\n            ORDER BY v.slot_start_date_local, v.slot_start_time_local"
+    },
+    {
+      "name": "v_bazi_hourly_tz_m12",
+      "sql": "CREATE VIEW v_bazi_hourly_tz_m12 AS\n            SELECT\n                v.hour_id,\n                v.slot_start_date_local,\n                v.slot_start_time_local,\n                v.slot_end_date_local,\n                v.slot_end_time_local,\n                v.slot_start_date_utc,\n                v.slot_start_time_utc,\n                v.slot_end_date_utc,\n                v.slot_end_time_utc,\n                v.weekday_local,\n                v.hour_name_ru,\n                v.hour_branch_char,\n                v.solar_term_id,\n                v.solar_term_name_ru,\n                -- v.solar_term_name removed\n                v.year_pillar,\n                v.month_pillar,\n                v.day_pillar,\n                v.hour_pillar,\n                v.year_stem,\n                v.year_branch,\n                v.month_stem,\n                v.month_branch,\n                v.day_stem,\n                v.day_branch,\n                v.hour_stem,\n                v.hour_branch_char AS hour_branch,\n                v.lunar_month,\n                v.lunar_day,\n                v.lunar_is_leap,\n                v.lunar_month_zi,\n                v.lunar_day_zi,\n                v.lunar_is_leap_zi\n            FROM v_bazi_hourly AS v\n            WHERE v.tz_offset_hours = -12\n            ORDER BY v.slot_start_date_local, v.slot_start_time_local"
+    },
+    {
+      "name": "v_bazi_hourly_tz_p00",
+      "sql": "CREATE VIEW v_bazi_hourly_tz_p00 AS\n            SELECT\n                v.hour_id,\n                v.slot_start_date_local,\n                v.slot_start_time_local,\n                v.slot_end_date_local,\n                v.slot_end_time_local,\n                v.slot_start_date_utc,\n                v.slot_start_time_utc,\n                v.slot_end_date_utc,\n                v.slot_end_time_utc,\n                v.weekday_local,\n                v.hour_name_ru,\n                v.hour_branch_char,\n                v.solar_term_id,\n                v.solar_term_name_ru,\n                -- v.solar_term_name removed\n                v.year_pillar,\n                v.month_pillar,\n                v.day_pillar,\n                v.hour_pillar,\n                v.year_stem,\n                v.year_branch,\n                v.month_stem,\n                v.month_branch,\n                v.day_stem,\n                v.day_branch,\n                v.hour_stem,\n                v.hour_branch_char AS hour_branch,\n                v.lunar_month,\n                v.lunar_day,\n                v.lunar_is_leap,\n                v.lunar_month_zi,\n                v.lunar_day_zi,\n                v.lunar_is_leap_zi\n            FROM v_bazi_hourly AS v\n            WHERE v.tz_offset_hours = 0\n            ORDER BY v.slot_start_date_local, v.slot_start_time_local"
+    },
+    {
+      "name": "v_bazi_hourly_tz_p01",
+      "sql": "CREATE VIEW v_bazi_hourly_tz_p01 AS\n            SELECT\n                v.hour_id,\n                v.slot_start_date_local,\n                v.slot_start_time_local,\n                v.slot_end_date_local,\n                v.slot_end_time_local,\n                v.slot_start_date_utc,\n                v.slot_start_time_utc,\n                v.slot_end_date_utc,\n                v.slot_end_time_utc,\n                v.weekday_local,\n                v.hour_name_ru,\n                v.hour_branch_char,\n                v.solar_term_id,\n                v.solar_term_name_ru,\n                -- v.solar_term_name removed\n                v.year_pillar,\n                v.month_pillar,\n                v.day_pillar,\n                v.hour_pillar,\n                v.year_stem,\n                v.year_branch,\n                v.month_stem,\n                v.month_branch,\n                v.day_stem,\n                v.day_branch,\n                v.hour_stem,\n                v.hour_branch_char AS hour_branch,\n                v.lunar_month,\n                v.lunar_day,\n                v.lunar_is_leap,\n                v.lunar_month_zi,\n                v.lunar_day_zi,\n                v.lunar_is_leap_zi\n            FROM v_bazi_hourly AS v\n            WHERE v.tz_offset_hours = 1\n            ORDER BY v.slot_start_date_local, v.slot_start_time_local"
+    },
+    {
+      "name": "v_bazi_hourly_tz_p02",
+      "sql": "CREATE VIEW v_bazi_hourly_tz_p02 AS\n            SELECT\n                v.hour_id,\n                v.slot_start_date_local,\n                v.slot_start_time_local,\n                v.slot_end_date_local,\n                v.slot_end_time_local,\n                v.slot_start_date_utc,\n                v.slot_start_time_utc,\n                v.slot_end_date_utc,\n                v.slot_end_time_utc,\n                v.weekday_local,\n                v.hour_name_ru,\n                v.hour_branch_char,\n                v.solar_term_id,\n                v.solar_term_name_ru,\n                -- v.solar_term_name removed\n                v.year_pillar,\n                v.month_pillar,\n                v.day_pillar,\n                v.hour_pillar,\n                v.year_stem,\n                v.year_branch,\n                v.month_stem,\n                v.month_branch,\n                v.day_stem,\n                v.day_branch,\n                v.hour_stem,\n                v.hour_branch_char AS hour_branch,\n                v.lunar_month,\n                v.lunar_day,\n                v.lunar_is_leap,\n                v.lunar_month_zi,\n                v.lunar_day_zi,\n                v.lunar_is_leap_zi\n            FROM v_bazi_hourly AS v\n            WHERE v.tz_offset_hours = 2\n            ORDER BY v.slot_start_date_local, v.slot_start_time_local"
+    },
+    {
+      "name": "v_bazi_hourly_tz_p03",
+      "sql": "CREATE VIEW v_bazi_hourly_tz_p03 AS\n            SELECT\n                v.hour_id,\n                v.slot_start_date_local,\n                v.slot_start_time_local,\n                v.slot_end_date_local,\n                v.slot_end_time_local,\n                v.slot_start_date_utc,\n                v.slot_start_time_utc,\n                v.slot_end_date_utc,\n                v.slot_end_time_utc,\n                v.weekday_local,\n                v.hour_name_ru,\n                v.hour_branch_char,\n                v.solar_term_id,\n                v.solar_term_name_ru,\n                -- v.solar_term_name removed\n                v.year_pillar,\n                v.month_pillar,\n                v.day_pillar,\n                v.hour_pillar,\n                v.year_stem,\n                v.year_branch,\n                v.month_stem,\n                v.month_branch,\n                v.day_stem,\n                v.day_branch,\n                v.hour_stem,\n                v.hour_branch_char AS hour_branch,\n                v.lunar_month,\n                v.lunar_day,\n                v.lunar_is_leap,\n                v.lunar_month_zi,\n                v.lunar_day_zi,\n                v.lunar_is_leap_zi\n            FROM v_bazi_hourly AS v\n            WHERE v.tz_offset_hours = 3\n            ORDER BY v.slot_start_date_local, v.slot_start_time_local"
+    },
+    {
+      "name": "v_bazi_hourly_tz_p04",
+      "sql": "CREATE VIEW v_bazi_hourly_tz_p04 AS\n            SELECT\n                v.hour_id,\n                v.slot_start_date_local,\n                v.slot_start_time_local,\n                v.slot_end_date_local,\n                v.slot_end_time_local,\n                v.slot_start_date_utc,\n                v.slot_start_time_utc,\n                v.slot_end_date_utc,\n                v.slot_end_time_utc,\n                v.weekday_local,\n                v.hour_name_ru,\n                v.hour_branch_char,\n                v.solar_term_id,\n                v.solar_term_name_ru,\n                -- v.solar_term_name removed\n                v.year_pillar,\n                v.month_pillar,\n                v.day_pillar,\n                v.hour_pillar,\n                v.year_stem,\n                v.year_branch,\n                v.month_stem,\n                v.month_branch,\n                v.day_stem,\n                v.day_branch,\n                v.hour_stem,\n                v.hour_branch_char AS hour_branch,\n                v.lunar_month,\n                v.lunar_day,\n                v.lunar_is_leap,\n                v.lunar_month_zi,\n                v.lunar_day_zi,\n                v.lunar_is_leap_zi\n            FROM v_bazi_hourly AS v\n            WHERE v.tz_offset_hours = 4\n            ORDER BY v.slot_start_date_local, v.slot_start_time_local"
+    },
+    {
+      "name": "v_bazi_hourly_tz_p05",
+      "sql": "CREATE VIEW v_bazi_hourly_tz_p05 AS\n            SELECT\n                v.hour_id,\n                v.slot_start_date_local,\n                v.slot_start_time_local,\n                v.slot_end_date_local,\n                v.slot_end_time_local,\n                v.slot_start_date_utc,\n                v.slot_start_time_utc,\n                v.slot_end_date_utc,\n                v.slot_end_time_utc,\n                v.weekday_local,\n                v.hour_name_ru,\n                v.hour_branch_char,\n                v.solar_term_id,\n                v.solar_term_name_ru,\n                -- v.solar_term_name removed\n                v.year_pillar,\n                v.month_pillar,\n                v.day_pillar,\n                v.hour_pillar,\n                v.year_stem,\n                v.year_branch,\n                v.month_stem,\n                v.month_branch,\n                v.day_stem,\n                v.day_branch,\n                v.hour_stem,\n                v.hour_branch_char AS hour_branch,\n                v.lunar_month,\n                v.lunar_day,\n                v.lunar_is_leap,\n                v.lunar_month_zi,\n                v.lunar_day_zi,\n                v.lunar_is_leap_zi\n            FROM v_bazi_hourly AS v\n            WHERE v.tz_offset_hours = 5\n            ORDER BY v.slot_start_date_local, v.slot_start_time_local"
+    },
+    {
+      "name": "v_bazi_hourly_tz_p06",
+      "sql": "CREATE VIEW v_bazi_hourly_tz_p06 AS\n            SELECT\n                v.hour_id,\n                v.slot_start_date_local,\n                v.slot_start_time_local,\n                v.slot_end_date_local,\n                v.slot_end_time_local,\n                v.slot_start_date_utc,\n                v.slot_start_time_utc,\n                v.slot_end_date_utc,\n                v.slot_end_time_utc,\n                v.weekday_local,\n                v.hour_name_ru,\n                v.hour_branch_char,\n                v.solar_term_id,\n                v.solar_term_name_ru,\n                -- v.solar_term_name removed\n                v.year_pillar,\n                v.month_pillar,\n                v.day_pillar,\n                v.hour_pillar,\n                v.year_stem,\n                v.year_branch,\n                v.month_stem,\n                v.month_branch,\n                v.day_stem,\n                v.day_branch,\n                v.hour_stem,\n                v.hour_branch_char AS hour_branch,\n                v.lunar_month,\n                v.lunar_day,\n                v.lunar_is_leap,\n                v.lunar_month_zi,\n                v.lunar_day_zi,\n                v.lunar_is_leap_zi\n            FROM v_bazi_hourly AS v\n            WHERE v.tz_offset_hours = 6\n            ORDER BY v.slot_start_date_local, v.slot_start_time_local"
+    },
+    {
+      "name": "v_bazi_hourly_tz_p07",
+      "sql": "CREATE VIEW v_bazi_hourly_tz_p07 AS\n            SELECT\n                v.hour_id,\n                v.slot_start_date_local,\n                v.slot_start_time_local,\n                v.slot_end_date_local,\n                v.slot_end_time_local,\n                v.slot_start_date_utc,\n                v.slot_start_time_utc,\n                v.slot_end_date_utc,\n                v.slot_end_time_utc,\n                v.weekday_local,\n                v.hour_name_ru,\n                v.hour_branch_char,\n                v.solar_term_id,\n                v.solar_term_name_ru,\n                -- v.solar_term_name removed\n                v.year_pillar,\n                v.month_pillar,\n                v.day_pillar,\n                v.hour_pillar,\n                v.year_stem,\n                v.year_branch,\n                v.month_stem,\n                v.month_branch,\n                v.day_stem,\n                v.day_branch,\n                v.hour_stem,\n                v.hour_branch_char AS hour_branch,\n                v.lunar_month,\n                v.lunar_day,\n                v.lunar_is_leap,\n                v.lunar_month_zi,\n                v.lunar_day_zi,\n                v.lunar_is_leap_zi\n            FROM v_bazi_hourly AS v\n            WHERE v.tz_offset_hours = 7\n            ORDER BY v.slot_start_date_local, v.slot_start_time_local"
+    },
+    {
+      "name": "v_bazi_hourly_tz_p08",
+      "sql": "CREATE VIEW v_bazi_hourly_tz_p08 AS\n            SELECT\n                v.hour_id,\n                v.slot_start_date_local,\n                v.slot_start_time_local,\n                v.slot_end_date_local,\n                v.slot_end_time_local,\n                v.slot_start_date_utc,\n                v.slot_start_time_utc,\n                v.slot_end_date_utc,\n                v.slot_end_time_utc,\n                v.weekday_local,\n                v.hour_name_ru,\n                v.hour_branch_char,\n                v.solar_term_id,\n                v.solar_term_name_ru,\n                -- v.solar_term_name removed\n                v.year_pillar,\n                v.month_pillar,\n                v.day_pillar,\n                v.hour_pillar,\n                v.year_stem,\n                v.year_branch,\n                v.month_stem,\n                v.month_branch,\n                v.day_stem,\n                v.day_branch,\n                v.hour_stem,\n                v.hour_branch_char AS hour_branch,\n                v.lunar_month,\n                v.lunar_day,\n                v.lunar_is_leap,\n                v.lunar_month_zi,\n                v.lunar_day_zi,\n                v.lunar_is_leap_zi\n            FROM v_bazi_hourly AS v\n            WHERE v.tz_offset_hours = 8\n            ORDER BY v.slot_start_date_local, v.slot_start_time_local"
+    },
+    {
+      "name": "v_bazi_hourly_tz_p09",
+      "sql": "CREATE VIEW v_bazi_hourly_tz_p09 AS\n            SELECT\n                v.hour_id,\n                v.slot_start_date_local,\n                v.slot_start_time_local,\n                v.slot_end_date_local,\n                v.slot_end_time_local,\n                v.slot_start_date_utc,\n                v.slot_start_time_utc,\n                v.slot_end_date_utc,\n                v.slot_end_time_utc,\n                v.weekday_local,\n                v.hour_name_ru,\n                v.hour_branch_char,\n                v.solar_term_id,\n                v.solar_term_name_ru,\n                -- v.solar_term_name removed\n                v.year_pillar,\n                v.month_pillar,\n                v.day_pillar,\n                v.hour_pillar,\n                v.year_stem,\n                v.year_branch,\n                v.month_stem,\n                v.month_branch,\n                v.day_stem,\n                v.day_branch,\n                v.hour_stem,\n                v.hour_branch_char AS hour_branch,\n                v.lunar_month,\n                v.lunar_day,\n                v.lunar_is_leap,\n                v.lunar_month_zi,\n                v.lunar_day_zi,\n                v.lunar_is_leap_zi\n            FROM v_bazi_hourly AS v\n            WHERE v.tz_offset_hours = 9\n            ORDER BY v.slot_start_date_local, v.slot_start_time_local"
+    },
+    {
+      "name": "v_bazi_hourly_tz_p10",
+      "sql": "CREATE VIEW v_bazi_hourly_tz_p10 AS\n            SELECT\n                v.hour_id,\n                v.slot_start_date_local,\n                v.slot_start_time_local,\n                v.slot_end_date_local,\n                v.slot_end_time_local,\n                v.slot_start_date_utc,\n                v.slot_start_time_utc,\n                v.slot_end_date_utc,\n                v.slot_end_time_utc,\n                v.weekday_local,\n                v.hour_name_ru,\n                v.hour_branch_char,\n                v.solar_term_id,\n                v.solar_term_name_ru,\n                -- v.solar_term_name removed\n                v.year_pillar,\n                v.month_pillar,\n                v.day_pillar,\n                v.hour_pillar,\n                v.year_stem,\n                v.year_branch,\n                v.month_stem,\n                v.month_branch,\n                v.day_stem,\n                v.day_branch,\n                v.hour_stem,\n                v.hour_branch_char AS hour_branch,\n                v.lunar_month,\n                v.lunar_day,\n                v.lunar_is_leap,\n                v.lunar_month_zi,\n                v.lunar_day_zi,\n                v.lunar_is_leap_zi\n            FROM v_bazi_hourly AS v\n            WHERE v.tz_offset_hours = 10\n            ORDER BY v.slot_start_date_local, v.slot_start_time_local"
+    },
+    {
+      "name": "v_bazi_hourly_tz_p11",
+      "sql": "CREATE VIEW v_bazi_hourly_tz_p11 AS\n            SELECT\n                v.hour_id,\n                v.slot_start_date_local,\n                v.slot_start_time_local,\n                v.slot_end_date_local,\n                v.slot_end_time_local,\n                v.slot_start_date_utc,\n                v.slot_start_time_utc,\n                v.slot_end_date_utc,\n                v.slot_end_time_utc,\n                v.weekday_local,\n                v.hour_name_ru,\n                v.hour_branch_char,\n                v.solar_term_id,\n                v.solar_term_name_ru,\n                -- v.solar_term_name removed\n                v.year_pillar,\n                v.month_pillar,\n                v.day_pillar,\n                v.hour_pillar,\n                v.year_stem,\n                v.year_branch,\n                v.month_stem,\n                v.month_branch,\n                v.day_stem,\n                v.day_branch,\n                v.hour_stem,\n                v.hour_branch_char AS hour_branch,\n                v.lunar_month,\n                v.lunar_day,\n                v.lunar_is_leap,\n                v.lunar_month_zi,\n                v.lunar_day_zi,\n                v.lunar_is_leap_zi\n            FROM v_bazi_hourly AS v\n            WHERE v.tz_offset_hours = 11\n            ORDER BY v.slot_start_date_local, v.slot_start_time_local"
+    },
+    {
+      "name": "v_bazi_hourly_tz_p12",
+      "sql": "CREATE VIEW v_bazi_hourly_tz_p12 AS\n            SELECT\n                v.hour_id,\n                v.slot_start_date_local,\n                v.slot_start_time_local,\n                v.slot_end_date_local,\n                v.slot_end_time_local,\n                v.slot_start_date_utc,\n                v.slot_start_time_utc,\n                v.slot_end_date_utc,\n                v.slot_end_time_utc,\n                v.weekday_local,\n                v.hour_name_ru,\n                v.hour_branch_char,\n                v.solar_term_id,\n                v.solar_term_name_ru,\n                -- v.solar_term_name removed\n                v.year_pillar,\n                v.month_pillar,\n                v.day_pillar,\n                v.hour_pillar,\n                v.year_stem,\n                v.year_branch,\n                v.month_stem,\n                v.month_branch,\n                v.day_stem,\n                v.day_branch,\n                v.hour_stem,\n                v.hour_branch_char AS hour_branch,\n                v.lunar_month,\n                v.lunar_day,\n                v.lunar_is_leap,\n                v.lunar_month_zi,\n                v.lunar_day_zi,\n                v.lunar_is_leap_zi\n            FROM v_bazi_hourly AS v\n            WHERE v.tz_offset_hours = 12\n            ORDER BY v.slot_start_date_local, v.slot_start_time_local"
+    },
+    {
+      "name": "v_bazi_hourly_tz_p13",
+      "sql": "CREATE VIEW v_bazi_hourly_tz_p13 AS\n            SELECT\n                v.hour_id,\n                v.slot_start_date_local,\n                v.slot_start_time_local,\n                v.slot_end_date_local,\n                v.slot_end_time_local,\n                v.slot_start_date_utc,\n                v.slot_start_time_utc,\n                v.slot_end_date_utc,\n                v.slot_end_time_utc,\n                v.weekday_local,\n                v.hour_name_ru,\n                v.hour_branch_char,\n                v.solar_term_id,\n                v.solar_term_name_ru,\n                -- v.solar_term_name removed\n                v.year_pillar,\n                v.month_pillar,\n                v.day_pillar,\n                v.hour_pillar,\n                v.year_stem,\n                v.year_branch,\n                v.month_stem,\n                v.month_branch,\n                v.day_stem,\n                v.day_branch,\n                v.hour_stem,\n                v.hour_branch_char AS hour_branch,\n                v.lunar_month,\n                v.lunar_day,\n                v.lunar_is_leap,\n                v.lunar_month_zi,\n                v.lunar_day_zi,\n                v.lunar_is_leap_zi\n            FROM v_bazi_hourly AS v\n            WHERE v.tz_offset_hours = 13\n            ORDER BY v.slot_start_date_local, v.slot_start_time_local"
+    },
+    {
+      "name": "v_bazi_hourly_tz_p14",
+      "sql": "CREATE VIEW v_bazi_hourly_tz_p14 AS\n            SELECT\n                v.hour_id,\n                v.slot_start_date_local,\n                v.slot_start_time_local,\n                v.slot_end_date_local,\n                v.slot_end_time_local,\n                v.slot_start_date_utc,\n                v.slot_start_time_utc,\n                v.slot_end_date_utc,\n                v.slot_end_time_utc,\n                v.weekday_local,\n                v.hour_name_ru,\n                v.hour_branch_char,\n                v.solar_term_id,\n                v.solar_term_name_ru,\n                -- v.solar_term_name removed\n                v.year_pillar,\n                v.month_pillar,\n                v.day_pillar,\n                v.hour_pillar,\n                v.year_stem,\n                v.year_branch,\n                v.month_stem,\n                v.month_branch,\n                v.day_stem,\n                v.day_branch,\n                v.hour_stem,\n                v.hour_branch_char AS hour_branch,\n                v.lunar_month,\n                v.lunar_day,\n                v.lunar_is_leap,\n                v.lunar_month_zi,\n                v.lunar_day_zi,\n                v.lunar_is_leap_zi\n            FROM v_bazi_hourly AS v\n            WHERE v.tz_offset_hours = 14\n            ORDER BY v.slot_start_date_local, v.slot_start_time_local"
+    },
+    {
+      "name": "v_good_sequence_gate",
+      "sql": "CREATE VIEW v_good_sequence_gate AS\r\nwith y as (Select \r\nq_y.*\r\nfrom v_qumen_chauby_year q_y\r\nwhere 1 = 1\r\n--and q_y.year_pillar ='丙午'\r\nand q_y.gate in ('生', '休', '開')\r\n)\r\n\r\n, m as (\r\nselect \r\nq_m.*\r\nfrom v_qumen_chauby_month q_m\r\nwhere 1 = 1 \r\nand q_m.gate in ('生', '休', '開')\r\n--and v_qimen_chauby_month= '丙午'\r\n)\r\n\r\n, d as (\r\nselect \r\nq_d.*\r\nfrom v_qumen_chauby_day q_d\r\nwhere 1 = 1 \r\nand q_d.gate in ('生', '休', '開')\r\n--and year_pillar= '丙午'\r\n)\r\n\r\n, h as (\r\nselect \r\nq_h.*\r\nfrom v_qumen_chauby_hourly q_h\r\nwhere 1 = 1 \r\nand q_h.gate in ('生', '休', '開')\r\n)\r\n\r\n, st_1 as (\r\nselect \r\nh.slot_start_date_local\r\n, h.weekday_local\r\n, h.slot_start_time_local\r\n, h.year_pillar\r\n, h.month_pillar\r\n, h.day_pillar\r\n, h.hour_pillar\r\n, h.palace_no\r\n, h.gate as hour_gate\r\n, d.gate as day_gate\r\n, m.gate as month_gate\r\n, y.gate as year_gate\r\n, case \r\n\twhen h.palace_no in (2, 4) and y.gate = m.gate and m.gate = d.gate and d.gate = h.gate then 1\r\n\twhen m.gate = d.gate and d.gate = h.gate then 2\r\n\twhen m.gate || d.gate || h.gate in ('生開休', '生生開', '生開開', '開開休', '開休休') then 3\r\n\telse 0\r\n\tend as prioritet\r\nfrom h\r\n\r\nleft join d\r\non h.year_pillar = d.year_pillar\r\nand h.month_pillar = d.month_pillar\r\nand h.day_pillar = d.day_pillar\r\nand h.palace_no = d.palace_no\r\n\r\nleft join m\r\non h.year_pillar = m.year_pillar\r\nand h.month_pillar = m.month_pillar\r\nand h.palace_no = m.palace_no\r\n\r\nleft join y\r\non h.year_pillar = y.year_pillar\r\nand h.palace_no = y.palace_no\r\n\r\nwhere 1 = 1\r\nand h.tz_offset_hours = 3\r\nand d.gate is not null\r\n)\r\nselect *\r\nfrom st_1\r\nwhere 1 = 1\r\n--and st_1.year_gate is not null\r\n--and st_1.palace_no in (2, 4)\r\nand st_1.month_gate is not null\r\nand st_1.day_gate is not null\r\nand st_1.hour_gate is not null"
+    },
+    {
+      "name": "v_qumen_chauby_day",
+      "sql": "CREATE VIEW v_qumen_chauby_day AS\r\nselect vh.year_pillar\r\n, vh. month_pillar\r\n, vh.day_pillar\r\n, vh.palace_no\r\n, spr.gate\r\n, spr.is_main_gate\r\n, spr.star\r\n, spr.is_main_star\r\n, spr.spirit\r\n, spr.\"structure\"\r\n, spr.is_fou_tou_heaven\r\n, spr.is_fou_tou_earth\r\nfrom t_qumen_chauby_day vh\r\n\r\n-- справочник раскладов\r\nleft join spr_qimen_templates spr\r\non vh.rasklad_id = spr.rasklad_id \r\nand vh.palace_no = spr.palace_no"
+    },
+    {
+      "name": "v_qumen_chauby_hourly",
+      "sql": "CREATE VIEW v_qumen_chauby_hourly AS\r\nselect vh.hour_id\r\n, baz.year_pillar\r\n, baz.month_pillar\r\n, baz.day_pillar\r\n, baz.hour_pillar\r\n, baz.tz_offset_hours\r\n, baz.slot_start_date_local\r\n, baz.hour_name_ru\r\n, baz.slot_start_time_local\r\n, baz.weekday_local\r\n\r\n, vh.palace_no\r\n, spr.gate\r\n, spr.is_main_gate\r\n, spr.star\r\n, spr.is_main_star\r\n, spr.spirit\r\n, spr.\"structure\"\r\n, spr.is_fou_tou_heaven\r\n, spr.is_fou_tou_earth\r\nfrom t_qumen_chauby_hourly vh\r\n\r\n-- справочник раскладов\r\nleft join spr_qimen_templates spr\r\non vh.rasklad_id = spr.rasklad_id \r\nand vh.palace_no = spr.palace_no\r\n\r\n-- дата и время базцы\r\ninner join v_bazi_hourly baz\r\non vh.hour_id = baz.hour_id \r\n--and tz_offset_hours = 3"
+    },
+    {
+      "name": "v_qumen_chauby_month",
+      "sql": "CREATE VIEW v_qumen_chauby_month AS\r\nselect vh.year_pillar\r\n, vh. month_pillar\r\n, vh.palace_no\r\n, spr.gate\r\n, spr.is_main_gate\r\n, spr.star\r\n, spr.is_main_star\r\n, spr.spirit\r\n, spr.\"structure\"\r\n, spr.is_fou_tou_heaven\r\n, spr.is_fou_tou_earth\r\nfrom t_qumen_chauby_month vh\r\n\r\n-- справочник раскладов\r\nleft join spr_qimen_templates spr\r\non vh.rasklad_id = spr.rasklad_id \r\nand vh.palace_no = spr.palace_no"
+    },
+    {
+      "name": "v_qumen_chauby_year",
+      "sql": "CREATE VIEW v_qumen_chauby_year AS\r\nselect vh.year_pillar\r\n\r\n, vh.palace_no\r\n, spr.gate\r\n, spr.is_main_gate\r\n, spr.star\r\n, spr.is_main_star\r\n, spr.spirit\r\n, spr.\"structure\"\r\n, spr.is_fou_tou_heaven\r\n, spr.is_fou_tou_earth\r\nfrom t_qumen_chauby_year vh\r\n\r\n-- справочник раскладов\r\nleft join spr_qimen_templates spr\r\non vh.rasklad_id = spr.rasklad_id \r\nand vh.palace_no = spr.palace_no"
+    }
+  ],
+  "indexes_by_table": {
+    "spr_bazi_qi_phase": [
+      {
+        "name": "idx_qi_phase_stem_branch",
+        "table": "spr_bazi_qi_phase",
+        "sql": "CREATE INDEX idx_qi_phase_stem_branch ON spr_bazi_qi_phase (stem_char, branch_char)"
+      }
+    ],
+    "spr_jiazi_extended": [
+      {
+        "name": "idx_jiazi_stem_branch",
+        "table": "spr_jiazi_extended",
+        "sql": "CREATE INDEX idx_jiazi_stem_branch ON spr_jiazi_extended (stem, branch)"
+      }
+    ],
+    "spr_qimen_templates": [
+      {
+        "name": "idx_qimen_templates_rasklad",
+        "table": "spr_qimen_templates",
+        "sql": "CREATE INDEX idx_qimen_templates_rasklad ON spr_qimen_templates (rasklad_id)"
+      },
+      {
+        "name": "idx_qimen_templates_search",
+        "table": "spr_qimen_templates",
+        "sql": "CREATE INDEX idx_qimen_templates_search ON spr_qimen_templates (yin_yang, ju_num, hour_stem_branch)"
+      }
+    ],
+    "t_bazi_hourly": [
+      {
+        "name": "idx_bazi_hourly_day_branch",
+        "table": "t_bazi_hourly",
+        "sql": "CREATE INDEX idx_bazi_hourly_day_branch ON t_bazi_hourly(day_branch)"
+      },
+      {
+        "name": "idx_bazi_hourly_day_stem",
+        "table": "t_bazi_hourly",
+        "sql": "CREATE INDEX idx_bazi_hourly_day_stem ON t_bazi_hourly(day_stem)"
+      },
+      {
+        "name": "idx_bazi_hourly_hour_branch",
+        "table": "t_bazi_hourly",
+        "sql": "CREATE INDEX idx_bazi_hourly_hour_branch ON t_bazi_hourly(hour_branch)"
+      },
+      {
+        "name": "idx_bazi_hourly_hour_stem",
+        "table": "t_bazi_hourly",
+        "sql": "CREATE INDEX idx_bazi_hourly_hour_stem ON t_bazi_hourly(hour_stem)"
+      },
+      {
+        "name": "idx_bazi_hourly_local",
+        "table": "t_bazi_hourly",
+        "sql": "CREATE INDEX idx_bazi_hourly_local\n            ON t_bazi_hourly (\n                tz_offset_hours,\n                slot_start_date_local,\n                slot_start_time_local\n            )\n            "
+      },
+      {
+        "name": "idx_bazi_hourly_lunar_day",
+        "table": "t_bazi_hourly",
+        "sql": "CREATE INDEX idx_bazi_hourly_lunar_day ON t_bazi_hourly(lunar_day)"
+      },
+      {
+        "name": "idx_bazi_hourly_lunar_day_zi",
+        "table": "t_bazi_hourly",
+        "sql": "CREATE INDEX idx_bazi_hourly_lunar_day_zi ON t_bazi_hourly(lunar_day_zi)"
+      },
+      {
+        "name": "idx_bazi_hourly_month_branch",
+        "table": "t_bazi_hourly",
+        "sql": "CREATE INDEX idx_bazi_hourly_month_branch ON t_bazi_hourly(month_branch)"
+      },
+      {
+        "name": "idx_bazi_hourly_month_stem",
+        "table": "t_bazi_hourly",
+        "sql": "CREATE INDEX idx_bazi_hourly_month_stem ON t_bazi_hourly(month_stem)"
+      },
+      {
+        "name": "idx_bazi_hourly_utc",
+        "table": "t_bazi_hourly",
+        "sql": "CREATE INDEX idx_bazi_hourly_utc\n            ON t_bazi_hourly (\n                tz_offset_hours,\n                slot_start_date_utc,\n                slot_start_time_utc\n            )\n            "
+      },
+      {
+        "name": "idx_bazi_hourly_year_branch",
+        "table": "t_bazi_hourly",
+        "sql": "CREATE INDEX idx_bazi_hourly_year_branch ON t_bazi_hourly(year_branch)"
+      },
+      {
+        "name": "idx_bazi_hourly_year_stem",
+        "table": "t_bazi_hourly",
+        "sql": "CREATE INDEX idx_bazi_hourly_year_stem ON t_bazi_hourly(year_stem)"
+      }
+    ],
+    "t_chart_analysis": [
+      {
+        "name": "idx_chart_analysis_lookup",
+        "table": "t_chart_analysis",
+        "sql": "CREATE INDEX idx_chart_analysis_lookup\n    ON t_chart_analysis (tz_offset_hours, datetime_utc, indicator_id)"
+      }
+    ],
+    "t_flying_stars": [
+      {
+        "name": "idx_fs_hour",
+        "table": "t_flying_stars",
+        "sql": "CREATE INDEX idx_fs_hour ON t_flying_stars(hour_id)"
+      }
+    ],
+    "t_qumen_chauby_hourly": [
+      {
+        "name": "idx_t_qumen_chauby_hourly_hour_id",
+        "table": "t_qumen_chauby_hourly",
+        "sql": "CREATE INDEX idx_t_qumen_chauby_hourly_hour_id ON t_qumen_chauby_hourly(hour_id)"
+      }
+    ],
+    "t_qumen_dgiren_hourly": [
+      {
+        "name": "idx_t_qumen_dgiren_hourly_hour_id",
+        "table": "t_qumen_dgiren_hourly",
+        "sql": "CREATE INDEX idx_t_qumen_dgiren_hourly_hour_id ON t_qumen_dgiren_hourly(hour_id)"
+      }
+    ]
+  },
+  "summary": {
+    "main": [
+      "t_analysis_activation",
+      "t_analysis_date",
+      "t_analysis_direction",
+      "t_analyz_activation",
+      "t_analyz_data",
+      "t_analyz_date",
+      "t_analyz_direction",
+      "t_bazi_hourly",
+      "t_chart_analysis",
+      "t_flying_stars",
+      "t_qumen_chauby_day",
+      "t_qumen_chauby_hourly",
+      "t_qumen_chauby_month",
+      "t_qumen_chauby_year",
+      "t_qumen_dgiren_day",
+      "t_qumen_dgiren_hourly",
+      "t_qumen_dgiren_month",
+      "t_qumen_dgiren_year",
+      "t_rule_registry",
+      "t_rule_scope",
+      "t_solar_term_time",
+      "t_solar_term_time_hko",
+      "t_sys_calculation_log",
+      "t_time_grid_hourly"
+    ],
+    "reference": [
+      "spr_analysis_scope",
+      "spr_bazi_qi_phase",
+      "spr_black_rabbit_matrix",
+      "spr_black_rabbit_scores",
+      "spr_column_comment",
+      "spr_day_officer_mapping",
+      "spr_earthly_branch",
+      "spr_gates",
+      "spr_gods",
+      "spr_heavenly_stem",
+      "spr_hour_stars",
+      "spr_indicator",
+      "spr_indicator_scope",
+      "spr_indicator_value",
+      "spr_jiazi_extended",
+      "spr_leader_stems",
+      "spr_master_dano_mapping",
+      "spr_month_stars",
+      "spr_pillar_cycle",
+      "spr_pillar_hour_rule",
+      "spr_pillar_month_rule",
+      "spr_qimen_templates",
+      "spr_ri_jia",
+      "spr_solar_term",
+      "spr_stars",
+      "spr_table_comment",
+      "spr_tongshu_branch_combo_rule",
+      "spr_tongshu_guigu_outcome",
+      "spr_tongshu_guigu_symbol",
+      "spr_tongshu_jiazi_profile",
+      "spr_tongshu_phase",
+      "spr_tongshu_phase_mapping",
+      "spr_tongshu_shensha_rule",
+      "spr_tongshu_stem_combo_rule",
+      "spr_tongshu_ten_god",
+      "spr_yellow_black_matrix",
+      "spr_yellow_black_stars"
+    ],
+    "control": [
+      "t_control_t_bazi_hourly",
+      "t_control_t_flying_stars",
+      "t_control_t_qumen_chauby_day",
+      "t_control_t_qumen_chauby_hourly",
+      "t_control_t_qumen_chauby_month",
+      "t_control_t_qumen_chauby_year",
+      "t_control_t_qumen_dgiren_day",
+      "t_control_t_qumen_dgiren_hourly",
+      "t_control_t_qumen_dgiren_month",
+      "t_control_t_qumen_dgiren_year"
+    ],
+    "other": []
+  },
+  "problems": []
+}

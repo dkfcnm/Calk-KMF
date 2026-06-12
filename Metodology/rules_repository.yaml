@@ -1,0 +1,37 @@
+rules:
+  # --- Группа: Ба Цзы (Взаимодействия) ---
+  - id: "bz_clash_day_year"
+    name: "Разрушитель Года (Sui Po)"
+    category: "negative"
+    score: -50
+    condition: "features.get('bazi_clash_day_year')"
+    description: "Земная ветвь дня сталкивается с ветвью года. Неблагоприятно для важных дел, долгосрочных проектов."
+
+  - id: "bz_clash_day_month"
+    name: "Разрушитель Месяца (Yue Po)"
+    category: "negative"
+    score: -30
+    condition: "features.get('bazi_clash_day_month')"
+    description: "Земная ветвь дня сталкивается с ветвью месяца. Энергия нестабильна."
+
+  - id: "bz_fu_yin_dy"
+    name: "Фу Инь (День-Год)"
+    category: "warning"
+    score: -10
+    condition: "features.get('bazi_fu_yin_day_year')"
+    description: "Дубликат столпа года и дня. Застой, слезы, повторение событий."
+
+  # --- Группа: Ци Мэнь (Спецструктуры) ---
+  - id: "qm_green_dragon"
+    name: "Зеленый Дракон поворачивает голову"
+    category: "structure"
+    score: 100
+    condition: "features.get('qm_has_green_dragon')"
+    description: "Великолепная структура для любых начинаний, особенно для карьеры и денег."
+
+  - id: "qm_bird_cave"
+    name: "Птица падает в гнездо"
+    category: "structure"
+    score: 100
+    condition: "features.get('qm_has_bird_cave')"
+    description: "Удача приходит сама без усилий. Благоприятно для всего."

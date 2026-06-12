@@ -1,0 +1,102 @@
+# Dependencies
+frontend/node_modules/
+**/node_modules/
+
+# Environment and secrets
+.env
+.env.local
+.env.*.local
+frontend/.env
+frontend/.env.local
+frontend/.env.*.local
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+*.egg-info/
+dist/
+build/
+
+# Logs and temp files
+*.log
+logs/
+log/
+*.tmp
+*.temp
+*.swp
+*.swo
+*~
+
+# IDE and editor settings
+.vscode/
+.idea/
+*.sublime-*
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Testing and caches
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Project-specific runtime data
+.headroom/
+.playwright-mcp/
+.roo/
+.windsurf/
+.kimi/
+_gsdata_/
+
+# Databases and large binary files
+*.db
+*.sqlite
+*.sqlite3
+*.backup
+*.sql
+*.bsp
+de421.bsp
+
+# Backup directory (contains large DB dumps)
+backup/*.backup
+backup/*.sql
+backup/postgres_*.backup
+backup/calk_kmf_*.backup
+backup/calk_kmf_*.sql
+
+# Frontend build artifacts
+frontend/build/
+frontend/build2.log
+frontend/build3.log
+frontend/build_final.log
+frontend/frontend.log
+
+# Check and debug artifacts (large/generated)
+check/*.png
+check/*.xlsx
+check/*.csv
+*.txt
+*.csv
+
+# Keep source data files
+!data/*.csv
+!data/*.sql
+!scripts/*.sql
+
+# Generated analysis files
+analysis.log
+analysis_day_*.txt
+analysis_day_*.txt
+check_*.txt
+debug_*.txt
+*.png
+
+# Large notebooks outputs
+*.ipynb_checkpoints/
+
+# Session context
+SESSION_CONTEXT.md
