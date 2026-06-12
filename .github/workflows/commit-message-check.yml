@@ -18,53 +18,51 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Validate commit messages
-        uses: gsactions/commit-message-checker@v2
-        with:
-          pattern: '^\[(ADD|FIX|REFACT|PERF|TEST|DOCS|DB|CONFIG)\] .+|^Merge pull request .+|^Initial commit.*'
-          flags: 'gms'
-          error: |
-            Commit message does not match the required format.
-
-            Expected format:
-              [TYPE] Short description (up to 72 characters)
-
-              Detailed description...
-
-            Allowed types:
-              [ADD]    — new feature
-              [FIX]    — bug fix
-              [REFACT] — refactoring
-              [PERF]   — performance improvement
-              [TEST]   — tests
-              [DOCS]   — documentation
-              [DB]     — database schema/migration
-              [CONFIG] — configuration, dependencies, CI/CD
-
-            Examples:
-              [ADD] Implement monthly flying stars calculation
-              [FIX] Correct day pillar boundary at solar term change
-
-      - name: Check commit message length
+      - name: Validate commit message format
         run: |
+          set -e
+
           if [ "${{ github.event_name }}" = "pull_request" ]; then
-            commits=$(git rev-list ${{ github.event.pull_request.base.sha }}..${{ github.event.pull_request.head.sha }})
+            base_sha="${{ github.event.pull_request.base.sha }}"
+            head_sha="${{ github.event.pull_request.head.sha }}"
+            commits=$(git rev-list "$base_sha".."$head_sha")
           else
-            commits=$(git rev-list ${{ github.event.before }}..${{ github.event.after }})
+            before="${{ github.event.before }}"
+            after="${{ github.event.after }}"
+            commits=$(git rev-list "$before".."$after")
           fi
 
           exit_code=0
           for commit in $commits; do
-            message=$(git log -1 --pretty=format:"%s" $commit)
+            message=$(git log -1 --pretty=format:"%B" "$commit")
             first_line=$(echo "$message" | head -n 1)
+
+            echo "Checking commit $commit: $first_line"
+
+            if echo "$first_line" | grep -qE '^\[(ADD|FIX|REFACT|PERF|TEST|DOCS|DB|CONFIG)\] .+'; then
+              :
+            elif echo "$first_line" | grep -qE '^Merge pull request .+'; then
+              :
+            elif echo "$first_line" | grep -qE '^Initial commit.*'; then
+              :
+            else
+              echo "ERROR: Commit message does not match the required format."
+              echo "  First line: $first_line"
+              echo ""
+              echo "Expected format: [TYPE] Short description"
+              echo "Allowed types: [ADD], [FIX], [REFACT], [PERF], [TEST], [DOCS], [DB], [CONFIG]"
+              exit_code=1
+            fi
+
             if [ ${#first_line} -gt 72 ]; then
-              echo "ERROR: First line of commit $commit is longer than 72 characters:"
+              echo "ERROR: First line is longer than 72 characters (${#first_line} chars):"
               echo "  $first_line"
               exit_code=1
             fi
           done
 
           if [ $exit_code -ne 0 ]; then
-            echo "Please keep the first line of commit messages within 72 characters."
             exit 1
           fi
+
+          echo "All commit messages are valid."
