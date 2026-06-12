@@ -281,6 +281,15 @@ refusing to allow a Personal Access Token to create or update workflow ... witho
 ```
 — создай новый токен с scope `workflow` (или `repo`) и используй его для push.
 
+### 8.3 Проверка workflow на GitHub
+
+1. Открой https://github.com/dkfcnm/Calk-KMF/actions/workflows/commit-message-check.yml
+2. Убедись, что workflow отображается как active.
+3. Сделай тестовый push — run должен появиться в списке.
+4. Если run падает сразу на старте runner (в логах только `system.txt` без шагов),
+   возможно, ограничение тестового окружения (см. `Metodology/bz.md`, Ошибка 29).
+   В production GitHub Actions runner должен запуститься корректно.
+
 ### 8.1 Ручной чеклист перед push
 
 - [ ] Сообщение коммита содержит тип `[ADD]`, `[FIX]`, `[REFACT]`, `[PERF]`, `[TEST]`, `[DOCS]`, `[DB]` или `[CONFIG]`.
