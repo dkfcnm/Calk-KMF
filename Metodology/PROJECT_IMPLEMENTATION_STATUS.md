@@ -1,7 +1,7 @@
 # Calk_KMF — Полный статус реализации
 
 **Версия:** 2.8.0  
-**Дата обновления:** 2026-06-05  
+**Дата обновления:** 2026-06-12  
 **Статус:** Активная разработка (Phase 1+2+5.5–5.7+5.13–5.18+7.11+Stage 6+Stage 7+Phase 8 выполнены)
 
 ---
@@ -40,6 +40,7 @@
 ✅ **Stage 6** (2026-05-31): Расширение дневного представления — hourly slots (12 двухчасовых периодов, сворачиваемые), Black Rabbit (Joey Yap), lunar month, compact Flying Stars (summary line Г/М/Д + сетка без часовых звёзд)
 ✅ **Stage 7** (2026-06-02): Qi Men полный редизайн — QimenGridV2 с цветовым кодированием дворцов по стихиям/направлениям, рамка с 12 ветвями (животные + время), русские названия и пиньинь для всех элементов, QimenSummaryPanel (сезон, час, декада, главная звезда/врата, 8 триграмм), PalaceExtendedInfo с 100 stem combos и сезонной силой, PostgreSQL-only backend, 5 новых вкладок в Справочниках
 ✅ **Phase 8** (2026-06-05): Полный переход на PostgreSQL-only — API сервисы (refs.py, tongshu_daily_service.py, personalized_service.py) переведены на SQLAlchemy, удалён SQLite fallback из logger.py и db_config.py, тесты переписаны на PostgreSQL, архивированы 50+ SQLite-зависимых скриптов. Созданы/синхронизированы недостающие таблицы в PostgreSQL: spr_day_officer_value, spr_tongshu_constellation, spr_tongshu_constellation_cycle, spr_great_sun_mountain, spr_qimen_gates, spr_qimen_spirits, spr_qimen_stars, spr_ri_jia. Добавлена колонка dagua_family в spr_jiazi_extended и icon_svg в spr_tongshu_black_rabbit_star. Исправлены placeholders TongShuDay (? → %s) для pg8000. Все тесты проходят: Python 38/38, React 32/32, build успешен.
+✅ **GitHub Publication** (2026-06-12): Проект опубликован на GitHub в публичном репозитории `dkfcnm/Calk-KMF`. Создан первый коммит с 349 файлами и детальным описанием. Настроен `.gitignore`, `.gitmessage` (шаблон коммита), `docs/commit-guidelines.md`. Обновлены `CHANGELOG.md`, `PROJECT.md`, `Metodology/bz.md`, `Metodology/tests_master_plan.md`, `Metodology/journal.log`.
 
 ### 2.2. Техническая архитектура
 
@@ -383,6 +384,10 @@ code/
 | `stop_portal.bat` | Остановка портала | ✅ |
 | MCP Server | Интеграция PostgreSQL с IDE | ✅ |
 | `.env` / `.env.example` | Конфигурация окружения | ✅ |
+| GitHub repository | Публичный репозиторий `dkfcnm/Calk-KMF` | ✅ |
+| `.gitignore` | Исключение лишних файлов из репозитория | ✅ |
+| `.gitmessage` | Шаблон детального коммита | ✅ |
+| `docs/commit-guidelines.md` | Правила ведения журнала изменений | ✅ |
 
 ---
 

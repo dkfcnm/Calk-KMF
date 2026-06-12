@@ -542,4 +542,106 @@ sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 ---
 
-*Последнее обновление: 2026-06-11*
+## Ошибка 24: GitHub отклоняет создание репозитория `Calk_KMF`
+
+**Контекст:** Публикация проекта на GitHub через API.
+
+**Симптом:**
+```json
+{
+  "message": "Repository creation failed.",
+  "errors": [{
+    "resource": "Repository",
+    "code": "custom",
+    "field": "name",
+    "message": "name already exists on this account"
+  }]
+}
+```
+
+**Причина:** Имя `Calk_KMF` недоступно для создания в аккаунте `dkfcnm`. Возможно, репозиторий с таким именем существовал ранее и был удалён, но имя ещё не освободилось, либо зарезервировано.
+
+**Решение:**
+1. Проверить существование репозитория через `GET /repos/{owner}/{repo}`.
+2. Если репозиторий не существует, но API не позволяет создать — использовать альтернативное имя, сохраняющее смысл (например, `Calk-KMF`).
+3. Обновить remote URL и документацию под фактическое имя.
+
+**Файлы:**
+- `.git/config`
+- `docs/commit-guidelines.md`
+- `CHANGELOG.md`
+
+---
+
+## Ошибка 25: Personal Access Token с scope `public_repo` не позволяет удалять репозитории
+
+**Контекст:** Попытка удалить временный тестовый репозиторий `test-calk-kmf-temp`.
+
+**Симптом:**
+```json
+{
+  "message": "Must have admin rights to Repository.",
+  "status": 403
+}
+```
+
+**Причина:** Scope `public_repo` даёт право создавать и изменять публичные репозитории, но не удалять их. Для удаления требуется scope `repo` (полный контроль) или `delete_repo`.
+
+**Решение:**
+1. Для публикации и push достаточно `public_repo`.
+2. Для удаления репозиториев создавать отдельный токен с scope `repo`/`delete_repo` или удалять вручную через веб-интерфейс.
+
+**Файлы:**
+- GitHub Settings → Developer settings → Personal access tokens
+
+---
+
+## Ошибка 26: Первый `git commit` занял слишком много времени
+
+**Контекст:** Создание первого коммита с 349 файлами.
+
+**Симптом:**
+```
+Auto packing the repository for optimum performance.
+```
+Команда `git commit` зависла и была убита по таймауту.
+
+**Причина:** Git автоматически запустил `gc` (garbage collection) после первого коммита большого репозитория.
+
+**Решение:**
+1. Проверить, что коммит всё-таки создался: `git log --oneline -1`.
+2. При необходимости запустить `git gc` вручную заранее.
+3. Для больших первичных коммитов увеличить таймаут операции.
+
+**Файлы:**
+- `.git/`
+
+---
+
+## Ошибка 27: Git remote/upstream сохраняет URL с токеном
+
+**Контекст:** Настройка upstream branch после `git push -u https://user:TOKEN@github.com/...`.
+
+**Симптом:**
+```
+[branch "main"]
+    remote = https://dkfcnm:ghp_...TOKEN...@github.com/dkfcnm/Calk-KMF.git
+```
+
+**Причина:** `git push -u <url>` записывает полный URL с credentials в `.git/config`.
+
+**Решение:**
+1. После push обязательно проверить `.git/config`.
+2. Установить remote на чистый URL:
+```bash
+git remote set-url origin https://github.com/dkfcnm/Calk-KMF.git
+git config branch.main.remote origin
+```
+3. Никогда не коммитить `.git/config`.
+
+**Файлы:**
+- `.git/config`
+
+---
+
+*Последнее обновление: 2026-06-12*
